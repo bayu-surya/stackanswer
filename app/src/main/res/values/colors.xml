@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#FF9300</color>
+    <color name="colorPrimaryDark">#FF6C00</color>
+    <color name="colorPrimaryGelap">#FF6C00</color>
+    <color name="colorPrimaryMuda">#FFFFAF7A</color>
+    <color name="colorPrimaryLight">#FACEB3</color>
+    <color name="colorAccent">#FF9300</color>
+    <color name="colorPrimary2">#64c9a1</color>
+    <color name="colorPrimaryDark2">#28C788</color>
+    <color name="colorPrimaryGelap2">#28C788</color>
+    <color name="colorAccent2">#64c9a1</color>
+    <color name="colorPrimaryMuda2">#C2E2D6</color>
+    <color name="redText">#ff4957</color>
+    <color name="bgHome">#F5F5F5</color>
+    <color name="bgIcon">#409ABA</color>
+    <color name="dividerGray">#c6c6c6</color>
+    <color name="semiTransparent">#3d616161</color>
+    <color name="textColorPrimaryLight">#DE000000</color>
+    <color name="placeholder_bg" tools:ignore="MissingDefaultResource">#dddddd</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="bgButtonDisable">#2b658c</color>
+    <color name="bgTeleponPenting">#F2F2F2</color>
+    <color name="greenDial">#26ca57</color>
+    <color name="bgButtonTeleponPenting">#F2F2F2</color>
+    <color name="grayDivider">#d1d1d1</color>
+    <color name="blue_facebook">#485a96</color>
+    <color name="white_smoke">#F7E2DFDF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey_dark">#403C3C</color>
+    <color name="grey_med_dark">#71747E</color>
+    <color name="grey_muda">#B5B6BD</color>
+    <color name="grey_light">#E9E9EF</color>
+    <color name="orange_accent">#ffb305</color>
+    <color name="black">#000000</color>
+
+    <color name="red_active">#e23e57</color>
+    <color name="purple_active">#9c27b0</color>
+    <color name="blue_active">#03a9f4</color>
+    <color name="green_active">#4caf50</color>
+    <color name="blue_grey_active">#607d8b</color>
+    <color name="yellow_active">#ffeb3b</color>
+    <color name="orange_active">#ff9800</color>
+
+    <integer-array name="pic_colors">
+        <item>@color/red_active</item>
+        <item>@color/purple_active</item>
+        <item>@color/blue_active</item>
+        <item>@color/green_active</item>
+        <item>@color/blue_grey_active</item>
+        <item>@color/yellow_active</item>
+        <item>@color/orange_active</item>
+    </integer-array>
+
+    <color name="windowBackground">#1C1C1C</color>
+    <color name="colorButtonNormal">#FFFFFB</color>
+    <color name="textColorPrimary">#FFFFFB</color>
+    <color name="textColorPrimaryInverse">#1C1C1C</color>
+    <color name="overlay">#AA1C1C1C</color>
+    <color name="divider">#333333</color>
+
+</resources>

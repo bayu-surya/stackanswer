@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Stack Answer</string>
+
+    <string name="movies">MOVIES</string>
+    <string name="tv_show">TV SHOW</string>
+    <string name="sineas">sineas</string>
+    <string name="show_null">anda_tidak_memiliki_daftar tv show</string>
+    <string name="load_more">Load More</string>
+    <string name="mohon_tunggu">mohon_tunggu</string>
+    <string name="movie_null">anda_tidak_memiliki_daftar movie</string>
+    <string name="detail_tv_show">Detail TV Show</string>
+    <string name="judul">Judul</string>
+    <string name="rating">Rating</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="pertama_tayang">Pertama Tayang</string>
+    <string name="poster_1">Poster 1</string>
+    <string name="poster_2">Poster 2</string>
+    <string name="poster_3">Poster 3</string>
+    <string name="genre">Genre</string>
+    <string name="sinopsis">Sinopsis</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="tanggal_rilis">Tanggal Rilis</string>
+    <string name="beranda">Beranda</string>
+    <string name="favorite">Favorite</string>
+
+</resources>

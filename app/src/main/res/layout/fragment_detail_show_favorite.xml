@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bgHome">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/toolbar_tittle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_tv_show"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_kembali"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/_9sdp"
+                android:paddingEnd="@dimen/_9sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:src="@drawable/ikon_panah_kiri"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:contentDescription="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/iv_favorite"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/_9sdp"
+                android:paddingEnd="@dimen/_9sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:src="@drawable/ic_favorite"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:contentDescription="@string/app_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/iv_poster"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:scaleType="fitXY"
+                android:background="@color/grey_light"
+                android:contentDescription="@string/app_name" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_judul_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/judul"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:layout_constraintBottom_toTopOf="@id/tv_judul"
+            app:layout_constraintTop_toTopOf="@id/cv_poster"
+            app:layout_constraintStart_toEndOf="@id/cv_poster"
+            android:layout_marginStart="@dimen/_15sdp"/>
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:lines="2"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toTopOf="@id/tv_rating_tittle"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_judul_tittle"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_rating_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@id/tv_rating"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_judul"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:lines="2"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toTopOf="@id/tv_bahasa_tittle"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_rating_tittle"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_bahasa_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/bahasa"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@id/tv_bahasa"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_rating"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_bahasa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:lines="2"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toTopOf="@id/tv_tayang_tittle"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_bahasa_tittle"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_tayang_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pertama_tayang"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@id/tv_tayang"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_bahasa"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_tayang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:lines="2"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@id/cv_poster"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"
+            app:layout_constraintTop_toBottomOf="@id/tv_tayang_tittle"
+            app:layout_constraintStart_toStartOf="@id/tv_judul_tittle"/>
+        
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_poster2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            app:layout_constraintEnd_toStartOf="@id/cv_poster3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/iv_poster2"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@color/grey_light"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/app_name" />
+            
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_poster2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/poster_1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@id/cv_poster2"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster2"
+            app:layout_constraintStart_toStartOf="@id/cv_poster2"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_poster3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintStart_toEndOf="@id/cv_poster2"
+            app:layout_constraintEnd_toStartOf="@id/cv_poster4"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/iv_poster3"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@color/grey_light"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/app_name" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_poster3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textAlignment="center"
+            android:text="@string/poster_2"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@id/cv_poster3"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster3"
+            app:layout_constraintStart_toStartOf="@id/cv_poster3"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_poster4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cv_poster3"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/iv_poster4"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@color/grey_light"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/app_name" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_poster4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/poster_3"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="@id/cv_poster4"
+            app:layout_constraintTop_toBottomOf="@id/cv_poster4"
+            app:layout_constraintStart_toStartOf="@id/cv_poster4"/>
+
+        <TextView
+            android:id="@+id/tv_genre_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/genre"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_poster2"
+            app:layout_constraintStart_toStartOf="@id/cv_poster"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_genre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_genre_tittle"
+            app:layout_constraintStart_toStartOf="@id/cv_poster"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_detail_utama_tittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sinopsis"
+            android:textStyle="bold"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_genre"
+            app:layout_constraintStart_toStartOf="@id/cv_poster"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"/>
+
+        <TextView
+            android:id="@+id/tv_detail_utama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Judul"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_utama_tittle"
+            app:layout_constraintStart_toStartOf="@id/cv_poster"
+            app:layout_constraintEnd_toEndOf="@id/tv_judul_tittle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:id="@+id/shimmer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            shimmer:duration="800">
+
+            <include
+                layout="@layout/item_content_home_placeholder" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:id="@+id/shimmer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            shimmer:duration="800">
+
+            <include
+                layout="@layout/item_content_home_placeholder" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:id="@+id/shimmer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            shimmer:duration="800">
+
+            <include
+                layout="@layout/item_content_home_placeholder" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
