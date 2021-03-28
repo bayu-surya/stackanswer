@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
@@ -15,16 +14,18 @@ import com.stackanswer.adapter.MovieAdapter
 import com.stackanswer.databinding.FragmentMovieBinding
 import com.stackanswer.model.Movie
 import com.stackanswer.source.Resource
-import com.stackanswer.utils.kotlin.DataMapper
+import com.stackanswer.utils.DataMapper
 import com.stackanswer.viewmodel.MovieViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.ViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
     private var binding: FragmentMovieBinding? = null
-    private var viewModel: MovieViewModelKt? = null
 
+    private val viewModel: MovieViewModelKt by viewModel()
+
+//    private var viewModel: MovieViewModelKt? = null
 //    var viewModel: MovieViewModel? = null
 //    fun MovieFragment() {}
 
@@ -37,9 +38,10 @@ class MovieKtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(MovieViewModelKt::class.java)
-        viewModel!!.tourism.observe(viewLifecycleOwner, { tourism ->
+//        val factory = ViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory).get(MovieViewModelKt::class.java)
+
+        viewModel.tourism.observe(viewLifecycleOwner, { tourism ->
             if (tourism != null) {
                 when (tourism) {
                     is Resource.Loading -> {

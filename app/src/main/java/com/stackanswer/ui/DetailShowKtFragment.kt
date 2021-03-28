@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.stackanswer.BuildConfig
 import com.stackanswer.R
 import com.stackanswer.databinding.FragmentDetailShowBinding
@@ -16,18 +15,22 @@ import com.stackanswer.model.Show
 import com.stackanswer.source.Resource
 import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.utils.Constan
+import com.stackanswer.utils.DataMapper
 import com.stackanswer.utils.ImageUtils
-import com.stackanswer.utils.kotlin.DataMapper
 import com.stackanswer.viewmodel.DetailShowViewModelKt
 import com.stackanswer.viewmodel.ShowFavoriteViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.DetailShowViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailShowKtFragment : Fragment(), View.OnClickListener {
 
 //    private var viewModel: DetailShowViewModel? = null
 //    private var showFavoriteViewModel: ShowFavoriteViewModel? = null
-    private var showFavoriteViewModel: ShowFavoriteViewModelKt? = null
-    private var viewModel: DetailShowViewModelKt? = null
+//    private var showFavoriteViewModel: ShowFavoriteViewModelKt? = null
+//    private var viewModel: DetailShowViewModelKt? = null
+
+    private val viewModel: DetailShowViewModelKt by viewModel()
+    private val showFavoriteViewModel: ShowFavoriteViewModelKt by viewModel()
+
     private var binding: FragmentDetailShowBinding? = null
     private var mShowFavorite: List<ShowFavorite>? = null
     private var film: Show? = null
@@ -65,8 +68,8 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
 //                }
 //            })
 
-        val factory = DetailShowViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(DetailShowViewModelKt::class.java)
+//        val factory = DetailShowViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory).get(DetailShowViewModelKt::class.java)
 
 //        val factory2 = ShowFavoriteViewModelFactory.getInstance(context)
 //        showFavoriteViewModel = ViewModelProvider(this, factory2).get(ShowFavoriteViewModel::class.java)
@@ -75,9 +78,9 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
 //            whileShow()
 //        })
 
-        val factory2 = com.stackanswer.viewmodel.factory.kotlin.ShowFavoriteViewModelFactory.getInstance(requireActivity())
-        showFavoriteViewModel = ViewModelProvider(this, factory2)[ShowFavoriteViewModelKt::class.java]
-        showFavoriteViewModel!!.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+//        val factory2 = ShowFavoriteViewModelFactory.getInstance(requireActivity())
+//        showFavoriteViewModel = ViewModelProvider(this, factory2)[ShowFavoriteViewModelKt::class.java]
+        showFavoriteViewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mShowFavorite = movieFavorites
             whileShow()
         })
@@ -127,7 +130,7 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
 //                })
 //                viewModel!!.findDetailShow("en-US", film!!.id.toString())
 
-                viewModel!!.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
+                viewModel.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
                     if (tourism != null) {
                         when (tourism) {
                             is Resource.Loading -> {
@@ -205,12 +208,12 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
                 k[m] = mShowFavorite!![m].id
                 if (data.id == mShowFavorite!![m].id) {
                     if (!Constan.compareObjects(data, mShowFavorite!![m])) {
-                        showFavoriteViewModel!!.updateFavoriteTourism(data, true)
+                        showFavoriteViewModel.updateFavoriteTourism(data, true)
                     }
                 }
             }
             if (!Constan.execute(k, data.id)) {
-                showFavoriteViewModel!!.setFavoriteTourism(data, true)
+                showFavoriteViewModel.setFavoriteTourism(data, true)
             }
         }
     }
@@ -218,7 +221,7 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
     private fun deleteFavorite() {
         if (movie != null) {
             val data = DataMapper.mapShowToShowDatabase(movie!!)
-            showFavoriteViewModel!!.deleteFavoriteTourism(data, true)
+            showFavoriteViewModel.deleteFavoriteTourism(data, true)
         }
     }
 

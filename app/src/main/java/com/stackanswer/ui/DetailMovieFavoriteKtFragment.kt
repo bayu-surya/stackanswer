@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.stackanswer.BuildConfig
 import com.stackanswer.R
 import com.stackanswer.databinding.FragmentDetailMovieFavoriteBinding
@@ -16,12 +15,16 @@ import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.utils.Constan
 import com.stackanswer.utils.ImageUtils
 import com.stackanswer.viewmodel.MovieFavoriteViewModelKt
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
 
     //    private var viewModel: MovieFavoriteViewModel? = null
+//    private var viewModel: MovieFavoriteViewModelKt? = null
+
+    private val viewModel: MovieFavoriteViewModelKt by viewModel()
+
     private var binding: FragmentDetailMovieFavoriteBinding? = null
-    private var viewModel: MovieFavoriteViewModelKt? = null
     private var mMovieFavorite: List<MovieFavorite>? = null
     private var film: MovieFavorite? = null
     private var bSave = true
@@ -47,9 +50,10 @@ class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
 //                mMovieFavorite = favoriteList
 //            })
 
-        val factory = com.stackanswer.viewmodel.factory.kotlin.MovieFavoriteViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
-        viewModel!!.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+//        val factory = MovieFavoriteViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
+
+        viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mMovieFavorite = movieFavorites
         })
 
@@ -123,19 +127,19 @@ class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
                 k[m] = mMovieFavorite!![m].id
                 if (film!!.id == mMovieFavorite!![m].id) {
                     if (!Constan.compareObjects(film, mMovieFavorite!![m])) {
-                        viewModel!!.updateFavoriteTourism(film!!, true)
+                        viewModel.updateFavoriteTourism(film!!, true)
                     }
                 }
             }
             if (!Constan.execute(k, film!!.id)) {
-                viewModel!!.setFavoriteTourism(film!!, true)
+                viewModel.setFavoriteTourism(film!!, true)
             }
         }
     }
 
     private fun deleteFavorite() {
         if (film != null) {
-            viewModel!!.deleteFavoriteTourism(film!!, true)
+            viewModel.deleteFavoriteTourism(film!!, true)
         }
     }
 

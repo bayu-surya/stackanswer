@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
@@ -14,16 +13,17 @@ import com.stackanswer.adapter.ShowAdapter
 import com.stackanswer.databinding.FragmentShowBinding
 import com.stackanswer.model.Show
 import com.stackanswer.source.Resource
-import com.stackanswer.utils.kotlin.DataMapper
+import com.stackanswer.utils.DataMapper
 import com.stackanswer.viewmodel.ShowViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.ShowViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ShowKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
     private var binding: FragmentShowBinding? = null
 
-    private var viewModel: ShowViewModelKt? = null
+//    private var viewModel: ShowViewModelKt? = null
+    private val viewModel: ShowViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -34,9 +34,10 @@ class ShowKtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ShowViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(ShowViewModelKt::class.java)
-        viewModel!!.tourism.observe(viewLifecycleOwner, { tourism ->
+//        val factory = ShowViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory).get(ShowViewModelKt::class.java)
+
+        viewModel.tourism.observe(viewLifecycleOwner, { tourism ->
             if (tourism != null) {
                 when (tourism) {
                     is Resource.Loading -> onStartProggress()

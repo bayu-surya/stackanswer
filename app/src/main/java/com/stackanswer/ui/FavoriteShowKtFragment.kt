@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
@@ -15,14 +14,16 @@ import com.stackanswer.adapter.ShowFavoriteKtAdapter
 import com.stackanswer.databinding.FragmentFavoriteShowBinding
 import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.viewmodel.ShowFavoriteViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.ShowFavoriteViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteShowKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
     private var binding: FragmentFavoriteShowBinding? = null
     private var adapter: ShowFavoriteKtAdapter? = null
-    private var viewModel: ShowFavoriteViewModelKt? = null
+
+//    private var viewModel: ShowFavoriteViewModelKt? = null
+    private val viewModel: ShowFavoriteViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -36,13 +37,13 @@ class FavoriteShowKtFragment : Fragment() {
 //        val factory = ShowFavoriteViewModelFactory.getInstance(context)
 //        val showFavoriteViewModel = ViewModelProvider(this, factory).get(ShowFavoriteViewModel::class.java)
 
-        val factory = ShowFavoriteViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory)[ShowFavoriteViewModelKt::class.java]
+//        val factory = ShowFavoriteViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory)[ShowFavoriteViewModelKt::class.java]
 
         onStartProggress()
         rvMovie = binding!!.rvShow
 
-        viewModel!!.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+        viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             setupRVmovie(movieFavorites)
             Handler().postDelayed({ onStopProggress() }, 2000)
         })

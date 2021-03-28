@@ -1,35 +1,35 @@
 package com.stackanswer.source.repository
 
 import com.stackanswer.core.domain.repository.IMovieFavoriteRepository
-import com.stackanswer.source.datasource.kotlin.LocalMovieFavoriteDataSource
+import com.stackanswer.source.datasource.LocalMovieFavoriteDataSource
 import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.kotlin.AppExecutors
+import com.stackanswer.utils.AppExecutors
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MovieFavoriteKtRepository private constructor(
-        private val remoteDataSource: RemoteDataSourceKt,
-        private val localDataSource: LocalMovieFavoriteDataSource,
-        private val appExecutors: AppExecutors
+class MovieFavoriteKtRepository(
+    private val remoteDataSource: RemoteDataSourceKt,
+    private val localDataSource: LocalMovieFavoriteDataSource,
+    private val appExecutors: AppExecutors
 ) : IMovieFavoriteRepository {
 
-    companion object {
-        @Volatile
-        private var instance: MovieFavoriteKtRepository? = null
-
-        fun getInstance(
-                remoteData: RemoteDataSourceKt,
-                localData: LocalMovieFavoriteDataSource,
-                appExecutors: AppExecutors
-        ): MovieFavoriteKtRepository =
-            instance ?: synchronized(this) {
-                instance ?: MovieFavoriteKtRepository(remoteData,
-                        localData,
-                        appExecutors)
-            }
-    }
+//    companion object {
+//        @Volatile
+//        private var instance: MovieFavoriteKtRepository? = null
+//
+//        fun getInstance(
+//            remoteData: RemoteDataSourceKt,
+//            localData: LocalMovieFavoriteDataSource,
+//            appExecutors: AppExecutors
+//        ): MovieFavoriteKtRepository =
+//            instance ?: synchronized(this) {
+//                instance ?: MovieFavoriteKtRepository(remoteData,
+//                        localData,
+//                        appExecutors)
+//            }
+//    }
 
     override fun getAllTourism(): Flowable<List<MovieFavorite>> {
         return localDataSource.getAllTourism()

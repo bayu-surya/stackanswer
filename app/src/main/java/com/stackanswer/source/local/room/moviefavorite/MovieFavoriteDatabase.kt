@@ -10,18 +10,18 @@ abstract class MovieFavoriteDatabase: RoomDatabase() {
 
     abstract fun movieDao(): MovieFavoriteDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: MovieFavoriteDatabase? = null
-
-        fun getInstance(context: Context): MovieFavoriteDatabase =
-                INSTANCE ?: synchronized(this) {
-                    val instance = Room.databaseBuilder(context.applicationContext,
-                            MovieFavoriteDatabase::class.java, "movie_database")
-                            .fallbackToDestructiveMigration()
-                            .build()
-                    INSTANCE = instance
-                    instance
-                }
-    }
+//    companion object {
+//        @Volatile
+//        private var INSTANCE: MovieFavoriteDatabase? = null
+//
+//        fun getInstance(context: Context): MovieFavoriteDatabase =
+//                INSTANCE ?: synchronized(this) {
+//                    val instance = Room.databaseBuilder(context.applicationContext,
+//                            MovieFavoriteDatabase::class.java, "movie_database")
+//                            .fallbackToDestructiveMigration()
+//                            .build()
+//                    INSTANCE = instance
+//                    instance
+//                }
+//    }
 }

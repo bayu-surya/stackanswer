@@ -100,7 +100,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-remote:3.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-web:3.3.0'
-    androidTestImplementation 'androidx.fragment:fragment-testing:1.3.1'
+    androidTestImplementation 'androidx.fragment:fragment-testing:1.3.2'
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:3.6.0'
@@ -129,4 +129,8 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "androidx.room:room-rxjava2:$room_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version_reactive"
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 }

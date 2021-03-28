@@ -1,19 +1,19 @@
-package com.stackanswer.source.datasource.kotlin
+package com.stackanswer.source.datasource
 
 import com.stackanswer.source.local.room.movie.MovieDao
 import com.stackanswer.source.local.room.movie.MoviePopular
 import io.reactivex.Flowable
 
-class LocalDataSource private constructor(private val tourismDao: MovieDao) {
+class LocalDataSource(private val tourismDao: MovieDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(tourismDao: MovieDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(tourismDao)
-            }
-    }
+//    companion object {
+//        private var instance: LocalDataSource? = null
+//
+//        fun getInstance(tourismDao: MovieDao): LocalDataSource =
+//            instance ?: synchronized(this) {
+//                instance ?: LocalDataSource(tourismDao)
+//            }
+//    }
 
     fun getAllTourism(): Flowable<List<MoviePopular>> = tourismDao.getAllTourism()
 

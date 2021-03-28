@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
@@ -15,14 +14,16 @@ import com.stackanswer.adapter.MovieFavoriteKtAdapter
 import com.stackanswer.databinding.FragmentFavoriteMovieBinding
 import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.viewmodel.MovieFavoriteViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.MovieFavoriteViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteMovieKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
     private var binding: FragmentFavoriteMovieBinding? = null
     private var adapter: MovieFavoriteKtAdapter? = null
-    private var viewModel: MovieFavoriteViewModelKt? = null
+
+//    private var viewModel: MovieFavoriteViewModelKt? = null
+    private val viewModel: MovieFavoriteViewModelKt by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,13 +40,13 @@ class FavoriteMovieKtFragment : Fragment() {
 //            MovieFavoriteViewModel::class.java
 //        )
 
-        val factory = MovieFavoriteViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
+//        val factory = MovieFavoriteViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
 
         onStartProggress()
         rvMovie = binding!!.rvMovie
 
-        viewModel!!.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+        viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             setupRVmovie(movieFavorites)
             Handler().postDelayed({ onStopProggress() }, 2000)
         })

@@ -15,16 +15,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
-class RemoteDataSourceKt private constructor(private val apiService: ApiService) {
-    companion object {
-        @Volatile
-        private var instance: RemoteDataSourceKt? = null
-
-        fun getInstance(service: ApiService): RemoteDataSourceKt =
-            instance ?: synchronized(this) {
-                instance ?: RemoteDataSourceKt(service)
-            }
-    }
+class RemoteDataSourceKt(private val apiService: ApiService) {
+//    companion object {
+//        @Volatile
+//        private var instance: RemoteDataSourceKt? = null
+//
+//        fun getInstance(service: ApiService): RemoteDataSourceKt =
+//            instance ?: synchronized(this) {
+//                instance ?: RemoteDataSourceKt(service)
+//            }
+//    }
 
     @SuppressLint("CheckResult")
     fun getAllDetailShowPopular(id: String): Flowable<ApiResponse<DetailShowResponse>> {

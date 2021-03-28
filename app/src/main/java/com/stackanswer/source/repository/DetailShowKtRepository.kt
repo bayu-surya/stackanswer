@@ -4,37 +4,37 @@ import com.stackanswer.core.domain.repository.IDetailShowRepository
 import com.stackanswer.retrofit.detailshowkt.DetailShowResponse
 import com.stackanswer.source.NetworkBoundResource
 import com.stackanswer.source.Resource
-import com.stackanswer.source.datasource.kotlin.LocalShowDataSource
+import com.stackanswer.source.datasource.LocalShowDataSource
 import com.stackanswer.source.local.room.show.ShowPopular
 import com.stackanswer.source.network.ApiResponse
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.kotlin.AppExecutors
-import com.stackanswer.utils.kotlin.DataMapper
+import com.stackanswer.utils.AppExecutors
+import com.stackanswer.utils.DataMapper
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class DetailShowKtRepository private constructor(
-        private val remoteDataSource: RemoteDataSourceKt,
-        private val localDataSource: LocalShowDataSource,
-        private val appExecutors: AppExecutors
+class DetailShowKtRepository(
+    private val remoteDataSource: RemoteDataSourceKt,
+    private val localDataSource: LocalShowDataSource,
+    private val appExecutors: AppExecutors
 ) : IDetailShowRepository {
 
-    companion object {
-        @Volatile
-        private var instance: DetailShowKtRepository? = null
-
-        fun getInstance(
-                remoteData: RemoteDataSourceKt,
-                localData: LocalShowDataSource,
-                appExecutors: AppExecutors
-        ): DetailShowKtRepository =
-            instance ?: synchronized(this) {
-                instance ?: DetailShowKtRepository(remoteData,
-                        localData,
-                        appExecutors)
-            }
-    }
+//    companion object {
+//        @Volatile
+//        private var instance: DetailShowKtRepository? = null
+//
+//        fun getInstance(
+//            remoteData: RemoteDataSourceKt,
+//            localData: LocalShowDataSource,
+//            appExecutors: AppExecutors
+//        ): DetailShowKtRepository =
+//            instance ?: synchronized(this) {
+//                instance ?: DetailShowKtRepository(remoteData,
+//                        localData,
+//                        appExecutors)
+//            }
+//    }
 
     override fun getAllTourism(id: String): Flowable<Resource<List<ShowPopular>>> =
         object : NetworkBoundResource<List<ShowPopular>, DetailShowResponse>() {

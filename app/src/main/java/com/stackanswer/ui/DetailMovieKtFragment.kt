@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.stackanswer.BuildConfig
 import com.stackanswer.R
 import com.stackanswer.databinding.FragmentDetailMovieBinding
@@ -17,18 +16,22 @@ import com.stackanswer.model.Movie
 import com.stackanswer.source.Resource
 import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.utils.Constan
+import com.stackanswer.utils.DataMapper
 import com.stackanswer.utils.ImageUtils
-import com.stackanswer.utils.kotlin.DataMapper
 import com.stackanswer.viewmodel.DetailMovieViewModelKt
 import com.stackanswer.viewmodel.MovieFavoriteViewModelKt
-import com.stackanswer.viewmodel.factory.kotlin.DetailMovieViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieKtFragment : Fragment(), View.OnClickListener {
 
 //    var viewModel: DetailMovieViewModel? = null
 //    private var movieFavoriteViewModel: MovieFavoriteViewModel? = null
-    private var movieFavoriteViewModel: MovieFavoriteViewModelKt? = null
-    private var viewModel: DetailMovieViewModelKt? = null
+//    private var movieFavoriteViewModel: MovieFavoriteViewModelKt? = null
+//    private var viewModel: DetailMovieViewModelKt? = null
+
+    private val viewModel: DetailMovieViewModelKt by viewModel()
+    private val movieFavoriteViewModel: MovieFavoriteViewModelKt by viewModel()
+
     private var binding: FragmentDetailMovieBinding? = null
     private val TAG = "MainViewModel"
     private var mMovieFavorites: List<MovieFavorite>? = null
@@ -57,8 +60,8 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
 //            }
 //        })
 
-        val factory = DetailMovieViewModelFactory.getInstance(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(DetailMovieViewModelKt::class.java)
+//        val factory = DetailMovieViewModelFactory.getInstance(requireActivity())
+//        viewModel = ViewModelProvider(this, factory).get(DetailMovieViewModelKt::class.java)
 
 //        val factory2 = MovieFavoriteViewModelFactory.getInstance(context)
 //        movieFavoriteViewModel = ViewModelProvider(this, factory2).get(MovieFavoriteViewModel::class.java)
@@ -67,9 +70,10 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
 //            whileShow()
 //        })
 
-        val factory2 = com.stackanswer.viewmodel.factory.kotlin.MovieFavoriteViewModelFactory.getInstance(requireActivity())
-        movieFavoriteViewModel = ViewModelProvider(this, factory2)[MovieFavoriteViewModelKt::class.java]
-        movieFavoriteViewModel!!.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+//        val factory2 = MovieFavoriteViewModelFactory.getInstance(requireActivity())
+//        movieFavoriteViewModel = ViewModelProvider(this, factory2)[MovieFavoriteViewModelKt::class.java]
+
+        movieFavoriteViewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mMovieFavorites = movieFavorites
             whileShow()
         })
@@ -114,7 +118,7 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
 //                })
 //                viewModel!!.findDetailMovie("en-US", film!!.id.toString())
 
-                viewModel!!.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
+                viewModel.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
                     if (tourism != null) {
                         when (tourism) {
                             is Resource.Loading -> {
@@ -194,12 +198,12 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
                 k[m] = mMovieFavorites!![m].id
                 if (data.id == mMovieFavorites!![m].id) {
                     if (!Constan.compareObjects(data, mMovieFavorites!![m])) {
-                        movieFavoriteViewModel!!.updateFavoriteTourism(data, true)
+                        movieFavoriteViewModel.updateFavoriteTourism(data, true)
                     }
                 }
             }
             if (!Constan.execute(k, data.id)) {
-                movieFavoriteViewModel!!.setFavoriteTourism(data, true)
+                movieFavoriteViewModel.setFavoriteTourism(data, true)
             }
         }
     }
@@ -207,7 +211,7 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
     private fun deleteFavorite() {
         if (movie != null) {
             val data = DataMapper.mapMovieToMovieDatabase(movie!!)
-            movieFavoriteViewModel!!.deleteFavoriteTourism(data, true)
+            movieFavoriteViewModel.deleteFavoriteTourism(data, true)
         }
     }
 

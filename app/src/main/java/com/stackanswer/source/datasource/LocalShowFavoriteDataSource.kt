@@ -1,10 +1,10 @@
-package com.stackanswer.source.datasource.kotlin
+package com.stackanswer.source.datasource
 
 import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.source.local.room.showfavorite.ShowFavoriteDao
 import io.reactivex.Flowable
 
-class LocalShowFavoriteDataSource private constructor(private val tourismDao: ShowFavoriteDao) {
+class LocalShowFavoriteDataSource(private val tourismDao: ShowFavoriteDao) {
 
     companion object {
         private var instance: LocalShowFavoriteDataSource? = null

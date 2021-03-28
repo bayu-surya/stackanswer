@@ -1,4 +1,4 @@
-package com.stackanswer.utils.kotlin
+package com.stackanswer.utils
 
 import com.stackanswer.model.Movie
 import com.stackanswer.model.Show

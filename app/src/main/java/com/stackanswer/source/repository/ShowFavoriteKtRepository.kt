@@ -1,35 +1,35 @@
 package com.stackanswer.source.repository
 
 import com.stackanswer.core.domain.repository.IShowFavoriteRepository
-import com.stackanswer.source.datasource.kotlin.LocalShowFavoriteDataSource
+import com.stackanswer.source.datasource.LocalShowFavoriteDataSource
 import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.kotlin.AppExecutors
+import com.stackanswer.utils.AppExecutors
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ShowFavoriteKtRepository private constructor(
-        private val remoteDataSource: RemoteDataSourceKt,
-        private val localDataSource: LocalShowFavoriteDataSource,
-        private val appExecutors: AppExecutors
+class ShowFavoriteKtRepository(
+    private val remoteDataSource: RemoteDataSourceKt,
+    private val localDataSource: LocalShowFavoriteDataSource,
+    private val appExecutors: AppExecutors
 ) : IShowFavoriteRepository {
 
-    companion object {
-        @Volatile
-        private var instance: ShowFavoriteKtRepository? = null
-
-        fun getInstance(
-                remoteData: RemoteDataSourceKt,
-                localData: LocalShowFavoriteDataSource,
-                appExecutors: AppExecutors
-        ): ShowFavoriteKtRepository =
-            instance ?: synchronized(this) {
-                instance ?: ShowFavoriteKtRepository(remoteData,
-                        localData,
-                        appExecutors)
-            }
-    }
+//    companion object {
+//        @Volatile
+//        private var instance: ShowFavoriteKtRepository? = null
+//
+//        fun getInstance(
+//            remoteData: RemoteDataSourceKt,
+//            localData: LocalShowFavoriteDataSource,
+//            appExecutors: AppExecutors
+//        ): ShowFavoriteKtRepository =
+//            instance ?: synchronized(this) {
+//                instance ?: ShowFavoriteKtRepository(remoteData,
+//                        localData,
+//                        appExecutors)
+//            }
+//    }
 
     override fun getAllTourism(): Flowable<List<ShowFavorite>> {
         return localDataSource.getAllTourism()

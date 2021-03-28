@@ -1,10 +1,10 @@
-package com.stackanswer.source.datasource.kotlin
+package com.stackanswer.source.datasource
 
 import com.stackanswer.source.local.room.show.ShowDao
 import com.stackanswer.source.local.room.show.ShowPopular
 import io.reactivex.Flowable
 
-class LocalShowDataSource private constructor(private val tourismDao: ShowDao) {
+class LocalShowDataSource(private val tourismDao: ShowDao) {
 
     companion object {
         private var instance: LocalShowDataSource? = null

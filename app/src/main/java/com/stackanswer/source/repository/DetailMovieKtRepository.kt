@@ -4,37 +4,37 @@ import com.stackanswer.core.domain.repository.IDetailMovieRepository
 import com.stackanswer.retrofit.detailmoviekt.DetailMovieResponse
 import com.stackanswer.source.NetworkBoundResource
 import com.stackanswer.source.Resource
-import com.stackanswer.source.datasource.kotlin.LocalDataSource
+import com.stackanswer.source.datasource.LocalDataSource
 import com.stackanswer.source.local.room.movie.MoviePopular
 import com.stackanswer.source.network.ApiResponse
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.kotlin.AppExecutors
-import com.stackanswer.utils.kotlin.DataMapper
+import com.stackanswer.utils.AppExecutors
+import com.stackanswer.utils.DataMapper
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class DetailMovieKtRepository private constructor(
-        private val remoteDataSource: RemoteDataSourceKt,
-        private val localDataSource: LocalDataSource,
-        private val appExecutors: AppExecutors
+class DetailMovieKtRepository(
+    private val remoteDataSource: RemoteDataSourceKt,
+    private val localDataSource: LocalDataSource,
+    private val appExecutors: AppExecutors
 ) : IDetailMovieRepository {
 
-    companion object {
-        @Volatile
-        private var instance: DetailMovieKtRepository? = null
-
-        fun getInstance(
-                remoteData: RemoteDataSourceKt,
-                localData: LocalDataSource,
-                appExecutors: AppExecutors
-        ): DetailMovieKtRepository =
-            instance ?: synchronized(this) {
-                instance ?: DetailMovieKtRepository(remoteData,
-                        localData,
-                        appExecutors)
-            }
-    }
+//    companion object {
+//        @Volatile
+//        private var instance: DetailMovieKtRepository? = null
+//
+//        fun getInstance(
+//            remoteData: RemoteDataSourceKt,
+//            localData: LocalDataSource,
+//            appExecutors: AppExecutors
+//        ): DetailMovieKtRepository =
+//            instance ?: synchronized(this) {
+//                instance ?: DetailMovieKtRepository(remoteData,
+//                        localData,
+//                        appExecutors)
+//            }
+//    }
 
     override fun getAllTourism(id: String): Flowable<Resource<List<MoviePopular>>> =
         object : NetworkBoundResource<List<MoviePopular>, DetailMovieResponse>() {
