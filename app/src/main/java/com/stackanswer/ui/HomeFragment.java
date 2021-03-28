@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.stackanswer.R;
 import com.stackanswer.adapter.SectionsPagerAdapter;
+import com.stackanswer.tidakdigunakan.ShowFragment;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -40,8 +41,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getContext(), getChildFragmentManager(),TAB_TITLES);
-        MovieFragment movieFragment = new MovieFragment();
-        ShowFragment showFragment = new ShowFragment();
+        MovieKtFragment movieFragment = new MovieKtFragment();
+        ShowKtFragment showFragment = new ShowKtFragment();
         adapter.addFragment(movieFragment);
         adapter.addFragment(showFragment);
         viewPager.setAdapter(adapter);

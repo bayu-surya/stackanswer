@@ -28,4 +28,14 @@ public class Constan {
     public static boolean execute(int[] strings, int searchString) {
         return ArrayUtils.contains(strings, searchString);
     }
+
+    public static String setBahasa(String string){
+        String sbahasa;
+        if (string.toLowerCase().equals("en")){
+            sbahasa="English";
+        } else {
+            sbahasa=string;
+        }
+        return sbahasa;
+    }
 }
