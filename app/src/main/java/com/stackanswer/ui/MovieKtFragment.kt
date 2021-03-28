@@ -88,7 +88,7 @@ class MovieKtFragment : Fragment() {
             val adapter = MovieAdapter(context, filmList)
             rvMovie!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             rvMovie!!.adapter = adapter
-            adapter.setCallback { films: Movie?, position: Int ->
+            adapter.setCallback { films: Movie?, _: Int ->
                 val mFragmentManager = (requireContext() as FragmentActivity).supportFragmentManager
                 val fragment = DetailMovieKtFragment()
                 val b = Bundle()

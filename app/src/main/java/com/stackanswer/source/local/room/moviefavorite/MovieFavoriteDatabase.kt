@@ -1,8 +1,6 @@
 package com.stackanswer.source.local.room.moviefavorite
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [MovieFavorite::class], version = 1, exportSchema = false)

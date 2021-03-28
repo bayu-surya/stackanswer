@@ -8,8 +8,8 @@ interface IDetailShowRepository {
 
     fun getAllTourism(id: String): Flowable<Resource<List<ShowPopular>>>
 
-    fun getFavoriteTourism(): Flowable<List<ShowPopular>>
-
-    fun setFavoriteTourism(tourism: ShowPopular, state: Boolean)
+//    fun getFavoriteTourism(): Flowable<List<ShowPopular>>
+//
+//    fun setFavoriteTourism(tourism: ShowPopular, state: Boolean)
 
 }

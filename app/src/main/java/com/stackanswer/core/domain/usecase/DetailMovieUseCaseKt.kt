@@ -6,6 +6,6 @@ import io.reactivex.Flowable
 
 interface DetailMovieUseCaseKt {
     fun getAllTourism(id: String): Flowable<Resource<List<MoviePopular>>>
-    fun getFavoriteTourism(): Flowable<List<MoviePopular>>
-    fun setFavoriteTourism(tourism: MoviePopular, state: Boolean)
+//    fun getFavoriteTourism(): Flowable<List<MoviePopular>>
+//    fun setFavoriteTourism(tourism: MoviePopular, state: Boolean)
 }

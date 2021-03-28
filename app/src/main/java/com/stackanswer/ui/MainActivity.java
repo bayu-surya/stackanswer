@@ -80,32 +80,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
-                Fragment fragment;
+        Fragment fragment;
 
-    //            navigation.getMenu().getItem(0).setIcon(R.drawable.icon_home2);
-    //            navigation.getMenu().getItem(1).setIcon(R.drawable.ic_favorite);
+        //            navigation.getMenu().getItem(0).setIcon(R.drawable.icon_home2);
+        //            navigation.getMenu().getItem(1).setIcon(R.drawable.ic_favorite);
 
-                switch (item.getItemId()) {
-                    case R.id.Beranda:
-                        fragment = new HomeFragment();
-                        getSupportFragmentManager().popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
-                                .commit();
-    //                    item.setIcon(R.drawable.icon_home2);
-                        return true;
-
-                    case R.id.Favorite:
-                        fragment = new FavoriteFragment();
-                        getSupportFragmentManager().popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
-                                .commit();
-    //                    item.setIcon(R.drawable.ic_favorite);
-                        return true;
-                }
-                return false;
-            };
+        if (item.getItemId()==R.id.Beranda ) {
+            fragment = new HomeFragment();
+            getSupportFragmentManager().popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
+                    .commit();
+            //                    item.setIcon(R.drawable.icon_home2);
+            return true;
+        } else if (item.getItemId()==R.id.Favorite ){
+            fragment = new FavoriteFragment();
+            getSupportFragmentManager().popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
+                    .commit();
+            //                    item.setIcon(R.drawable.ic_favorite);
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     private void onKeyboardVisibilityChanged(boolean opened) {
         if (opened) {

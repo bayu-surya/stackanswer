@@ -19,7 +19,7 @@ class ShowFavoriteInteractor(private val movieRepository: IShowFavoriteRepositor
         movieRepository.deleteFavoriteTourism(tourism, state)
     }
 
-    override fun deleteAllFavoriteTourism() {
-        movieRepository.deleteAllFavoriteTourism()
-    }
+//    override fun deleteAllFavoriteTourism() {
+//        movieRepository.deleteAllFavoriteTourism()
+//    }
 }

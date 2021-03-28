@@ -1,9 +1,6 @@
 package com.stackanswer.source.local.room.movie
 
-import android.content.Context
-
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [MoviePopular::class], version = 1, exportSchema = false)

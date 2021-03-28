@@ -31,7 +31,7 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
         val resultData = PublishSubject.create<ApiResponse<DetailShowResponse>>()
 //                .
         //get data from remote api
-        val client = apiService.getDetailShowPopuler(id, BuildConfig.API_KEY, "en-US", );
+        val client = apiService.getDetailShowPopuler(id, BuildConfig.API_KEY, "en-US" )
 
         client?.
         subscribeOn(Schedulers.computation())?.
@@ -57,7 +57,7 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
         val resultData = PublishSubject.create<ApiResponse<DetailMovieResponse>>()
 //                .
         //get data from remote api
-        val client = apiService.getDetailMoviePopuler(id, BuildConfig.API_KEY, "en-US", );
+        val client = apiService.getDetailMoviePopuler(id, BuildConfig.API_KEY, "en-US")
 
         client?.
         subscribeOn(Schedulers.computation())?.
@@ -83,7 +83,7 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
         val resultData = PublishSubject.create<ApiResponse<List<ResultsShowItem>>>()
 
         //get data from remote api
-        val client = apiService.getListShowPopuler(BuildConfig.API_KEY, "en-US", "1");
+        val client = apiService.getListShowPopuler(BuildConfig.API_KEY, "en-US", "1")
 
         client?.
         subscribeOn(Schedulers.computation())?.
@@ -122,7 +122,7 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
         val resultData = PublishSubject.create<ApiResponse<List<ResultsItem>>>()
 
         //get data from remote api
-        val client = apiService.getListMoviePopuler(BuildConfig.API_KEY, "en-US", "1");
+        val client = apiService.getListMoviePopuler(BuildConfig.API_KEY, "en-US", "1")
 
         client?.
         subscribeOn(Schedulers.computation())?.

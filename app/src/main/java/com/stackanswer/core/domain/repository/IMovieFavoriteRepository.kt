@@ -9,5 +9,5 @@ interface IMovieFavoriteRepository {
     fun setFavoriteTourism(tourism: MovieFavorite, state: Boolean)
     fun updateFavoriteTourism(tourism: MovieFavorite, state: Boolean)
     fun deleteFavoriteTourism(tourism: MovieFavorite, state: Boolean)
-    fun deleteAllFavoriteTourism()
+//    fun deleteAllFavoriteTourism()
 }

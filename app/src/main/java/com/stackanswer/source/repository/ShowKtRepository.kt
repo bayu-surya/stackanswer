@@ -8,7 +8,6 @@ import com.stackanswer.source.datasource.LocalShowDataSource
 import com.stackanswer.source.local.room.show.ShowPopular
 import com.stackanswer.source.network.ApiResponse
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.AppExecutors
 import com.stackanswer.utils.DataMapper
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,8 +15,9 @@ import io.reactivex.schedulers.Schedulers
 
 class ShowKtRepository(
     private val remoteDataSource: RemoteDataSourceKt,
-    private val localDataSource: LocalShowDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalShowDataSource
+//    ,
+//    private val appExecutors: AppExecutors
 ) : IShowRepository {
 
 //    companion object {
@@ -58,13 +58,13 @@ class ShowKtRepository(
             }
         }.asFlowable()
 
-    override fun getFavoriteTourism(): Flowable<List<ShowPopular>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun setFavoriteTourism(tourism: ShowPopular, state: Boolean) {
-        TODO("Not yet implemented")
-    }
+//    override fun getFavoriteTourism(): Flowable<List<ShowPopular>> {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun setFavoriteTourism(tourism: ShowPopular, state: Boolean) {
+//        TODO("Not yet implemented")
+//    }
 
 //    override fun getFavoriteTourism(): Flowable<List<ShowPopular>> {
 //        return localDataSource.getFavoriteTourism().map { DataMapper.mapEntitiesToDomain(it) }

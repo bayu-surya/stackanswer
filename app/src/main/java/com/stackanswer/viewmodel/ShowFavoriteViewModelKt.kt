@@ -23,8 +23,8 @@ class ShowFavoriteViewModelKt (tourismUseCase: ShowFavoriteUseCaseKt) : ViewMode
         to.deleteFavoriteTourism(tourism, newStatus)
     }
 
-    fun deleteAllFavoriteTourism(){
-        to.deleteAllFavoriteTourism()
-    }
+//    fun deleteAllFavoriteTourism(){
+//        to.deleteAllFavoriteTourism()
+//    }
 
 }

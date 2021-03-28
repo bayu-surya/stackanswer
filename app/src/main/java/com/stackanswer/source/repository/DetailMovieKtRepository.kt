@@ -8,7 +8,6 @@ import com.stackanswer.source.datasource.LocalDataSource
 import com.stackanswer.source.local.room.movie.MoviePopular
 import com.stackanswer.source.network.ApiResponse
 import com.stackanswer.source.remote.response.RemoteDataSourceKt
-import com.stackanswer.utils.AppExecutors
 import com.stackanswer.utils.DataMapper
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,8 +15,9 @@ import io.reactivex.schedulers.Schedulers
 
 class DetailMovieKtRepository(
     private val remoteDataSource: RemoteDataSourceKt,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
+//    ,
+//    private val appExecutors: AppExecutors
 ) : IDetailMovieRepository {
 
 //    companion object {
@@ -62,13 +62,13 @@ class DetailMovieKtRepository(
             }
         }.asFlowable()
 
-    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
-        TODO("Not yet implemented")
-    }
+//    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
+//        TODO("Not yet implemented")
+//    }
 
 //    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
 //        return localDataSource.getFavoriteTourism().map { DataMapper.mapEntitiesToDomain(it) }
