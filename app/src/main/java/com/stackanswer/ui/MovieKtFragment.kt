@@ -14,9 +14,9 @@ import com.stackanswer.R
 import com.stackanswer.adapter.MovieAdapter
 import com.stackanswer.databinding.FragmentMovieBinding
 import com.stackanswer.model.Movie
+import com.stackanswer.source.Resource
 import com.stackanswer.utils.kotlin.DataMapper
 import com.stackanswer.viewmodel.MovieViewModelKt
-import com.stackanswer.source.Resource
 import com.stackanswer.viewmodel.factory.kotlin.ViewModelFactory
 
 class MovieKtFragment : Fragment() {

@@ -14,7 +14,6 @@ import com.stackanswer.adapter.ShowAdapter
 import com.stackanswer.databinding.FragmentShowBinding
 import com.stackanswer.model.Show
 import com.stackanswer.source.Resource
-import com.stackanswer.tidakdigunakan.DetailShowFragment
 import com.stackanswer.utils.kotlin.DataMapper
 import com.stackanswer.viewmodel.ShowViewModelKt
 import com.stackanswer.viewmodel.factory.kotlin.ShowViewModelFactory

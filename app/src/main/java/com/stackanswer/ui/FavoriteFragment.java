@@ -12,8 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.stackanswer.R;
 import com.stackanswer.adapter.SectionsPagerAdapter;
-import com.stackanswer.tidakdigunakan.FavoriteMovieFragment;
-import com.stackanswer.tidakdigunakan.FavoriteShowFragment;
 
 public class FavoriteFragment extends Fragment implements View.OnClickListener {
 

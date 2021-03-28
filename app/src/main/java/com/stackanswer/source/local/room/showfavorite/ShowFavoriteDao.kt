@@ -1,7 +1,6 @@
 package com.stackanswer.source.local.room.showfavorite
 
 import androidx.room.*
-import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import io.reactivex.Completable
 import io.reactivex.Flowable
 

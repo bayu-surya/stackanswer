@@ -3,8 +3,8 @@ package com.stackanswer.viewmodel.factory.kotlin
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.stackanswer.injection.kotlin.Injection
 import com.stackanswer.core.domain.usecase.MovieUseCaseKt
+import com.stackanswer.injection.kotlin.Injection
 import com.stackanswer.viewmodel.MovieViewModelKt
 
 class ViewModelFactory private constructor(private val tourismUseCase: MovieUseCaseKt) :

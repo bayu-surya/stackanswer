@@ -12,7 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.stackanswer.R;
 import com.stackanswer.adapter.SectionsPagerAdapter;
-import com.stackanswer.tidakdigunakan.ShowFragment;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 

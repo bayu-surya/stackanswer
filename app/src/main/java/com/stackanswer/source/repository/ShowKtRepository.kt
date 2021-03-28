@@ -1,13 +1,13 @@
 package com.stackanswer.source.repository
 
 import com.stackanswer.core.domain.repository.IShowRepository
+import com.stackanswer.retrofit.ResultsShowItem
 import com.stackanswer.source.NetworkBoundResource
-import com.stackanswer.source.remote.response.RemoteDataSourceKt
 import com.stackanswer.source.Resource
 import com.stackanswer.source.datasource.kotlin.LocalShowDataSource
-import com.stackanswer.retrofit.ResultsShowItem
 import com.stackanswer.source.local.room.show.ShowPopular
 import com.stackanswer.source.network.ApiResponse
+import com.stackanswer.source.remote.response.RemoteDataSourceKt
 import com.stackanswer.utils.kotlin.AppExecutors
 import com.stackanswer.utils.kotlin.DataMapper
 import io.reactivex.Flowable

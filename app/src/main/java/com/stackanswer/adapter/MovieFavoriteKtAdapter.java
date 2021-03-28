@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.stackanswer.BuildConfig;
 import com.stackanswer.R;
-import com.stackanswer.model.Movie;
 import com.stackanswer.source.local.room.moviefavorite.MovieFavorite;
 import com.stackanswer.utils.ImageUtils;
 

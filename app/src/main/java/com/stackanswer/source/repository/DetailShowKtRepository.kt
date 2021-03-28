@@ -4,7 +4,6 @@ import com.stackanswer.core.domain.repository.IDetailShowRepository
 import com.stackanswer.retrofit.detailshowkt.DetailShowResponse
 import com.stackanswer.source.NetworkBoundResource
 import com.stackanswer.source.Resource
-import com.stackanswer.source.datasource.kotlin.LocalDataSource
 import com.stackanswer.source.datasource.kotlin.LocalShowDataSource
 import com.stackanswer.source.local.room.show.ShowPopular
 import com.stackanswer.source.network.ApiResponse

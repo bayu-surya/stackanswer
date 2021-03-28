@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.stackanswer.core.domain.usecase.MovieFavoriteUseCaseKt
 import com.stackanswer.injection.kotlin.Injection
-import com.stackanswer.core.domain.usecase.ShowUseCaseKt
 import com.stackanswer.viewmodel.MovieFavoriteViewModelKt
-import com.stackanswer.viewmodel.ShowViewModelKt
 
 class MovieFavoriteViewModelFactory private constructor(private val tourismUseCase: MovieFavoriteUseCaseKt) :
     ViewModelProvider.NewInstanceFactory() {

@@ -1,9 +1,9 @@
 package com.stackanswer.utils;
 
-import com.stackanswer.source.local.room.moviefavorite.MovieFavorite;
-import com.stackanswer.source.local.room.showfavorite.ShowFavorite;
 import com.stackanswer.model.Movie;
 import com.stackanswer.model.Show;
+import com.stackanswer.source.local.room.moviefavorite.MovieFavorite;
+import com.stackanswer.source.local.room.showfavorite.ShowFavorite;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.stackanswer.core.domain.usecase
 
-import android.util.Log
 import com.stackanswer.core.domain.repository.IMovieFavoriteRepository
 import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 
