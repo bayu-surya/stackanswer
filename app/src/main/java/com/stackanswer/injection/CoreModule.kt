@@ -50,12 +50,12 @@ val repositoryModule = module {
     single { LocalShowDataSource(get()) }
     single { LocalShowFavoriteDataSource(get()) }
     single { LocalMovieFavoriteDataSource(get()) }
-    single<IShowRepository> { ShowKtRepository(get(), get(), get()) }
-    single<IMovieRepository> { MovieKtRepository(get(), get(), get()) }
-    single<IDetailShowRepository> { DetailShowKtRepository(get(), get(), get()) }
-    single<IDetailMovieRepository> { DetailMovieKtRepository(get(), get(), get()) }
-    single<IShowFavoriteRepository> { ShowFavoriteKtRepository(get(), get(), get()) }
-    single<IMovieFavoriteRepository> { MovieFavoriteKtRepository(get(), get(), get()) }
+    single<IShowRepository> { ShowKtRepository(get(), get()) }
+    single<IMovieRepository> { MovieKtRepository(get(), get()) }
+    single<IDetailShowRepository> { DetailShowKtRepository(get(), get()) }
+    single<IDetailMovieRepository> { DetailMovieKtRepository(get(), get()) }
+    single<IShowFavoriteRepository> { ShowFavoriteKtRepository(get(), get()) }
+    single<IMovieFavoriteRepository> { MovieFavoriteKtRepository(get(), get()) }
 }
 
 val movieDatabaseModule = module {
