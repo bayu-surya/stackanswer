@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.stackanswer.adapter.SectionsPagerAdapter;
 import com.stackanswer.favorite.R;
-import com.stackanswer.favorite.adapter.SectionsPagerAdapter;
 
 public class FavoriteFragment extends Fragment implements View.OnClickListener {
 
