@@ -1,7 +1,5 @@
-package com.stackanswer.ui;
+package com.stackanswer.favorite;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,27 +9,24 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.stackanswer.R;
-import com.stackanswer.adapter.SectionsPagerAdapter;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class FavoriteFragment extends Fragment implements View.OnClickListener {
 
     private static final int[] TAB_TITLES = new int[]{R.string.movies, R.string.tv_show};
 
-    public HomeFragment() {
+    public FavoriteFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_favorite, container, false);
 
         ImageView ivSetting = view.findViewById(R.id.iv_setting);
         ivSetting.setOnClickListener(this);
-        FloatingActionButton fabAdd = view.findViewById(R.id.fab_add);
-        fabAdd.setOnClickListener(this);
+        ImageView ivKembali = view.findViewById(R.id.iv_kembali);
+        ivKembali.setOnClickListener(this);
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(),getChildFragmentManager(),TAB_TITLES);
         ViewPager viewPager = view.findViewById(R.id.view_pager);
@@ -45,8 +40,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getContext(), getChildFragmentManager(),TAB_TITLES);
-        MovieKtFragment movieFragment = new MovieKtFragment();
-        ShowKtFragment showFragment = new ShowKtFragment();
+        FavoriteMovieKtFragment movieFragment = new FavoriteMovieKtFragment();
+        FavoriteShowKtFragment showFragment = new FavoriteShowKtFragment();
         adapter.addFragment(movieFragment);
         adapter.addFragment(showFragment);
         viewPager.setAdapter(adapter);
@@ -54,11 +49,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.fab_add) {
-            Uri uri = Uri.parse("stackanswer://favorite");
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(uri);
-            startActivity(i);
+        if (v.getId() == R.id.iv_kembali) {
+            requireActivity().onBackPressed();
         }
     }
 }

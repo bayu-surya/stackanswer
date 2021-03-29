@@ -1,5 +1,9 @@
 package com.stackanswer.favorite
 
-//val favoriteModule = module {
-//    viewModel { MapsViewModel(get()) }
-//}
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
+
+val favoriteModule = module {
+    viewModel { MovieFavoriteViewModelKt(get()) }
+    viewModel { ShowFavoriteViewModelKt(get()) }
+}
