@@ -12,15 +12,12 @@ import com.stackanswer.core.BuildConfig
 import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.core.utils.Constan
 import com.stackanswer.core.utils.ImageUtils
-import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
 import com.stackanswer.favorite.R
 import com.stackanswer.favorite.databinding.FragmentDetailMovieFavoriteBinding
+import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
-
-    //    private var viewModel: MovieFavoriteViewModel? = null
-//    private var viewModel: MovieFavoriteViewModelKt? = null
 
     private val viewModel: MovieFavoriteViewModelKt by viewModel()
 
@@ -41,17 +38,6 @@ class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding!!.ivKembali.setOnClickListener(this)
         binding!!.ivFavorite.setOnClickListener(this)
-
-//        val factory = MovieFavoriteViewModelFactory.getInstance(context)
-//        viewModel = ViewModelProvider(this, factory).get(MovieFavoriteViewModel::class.java)
-//        viewModel!!.allMovie.observe(
-//            viewLifecycleOwner,
-//            { favoriteList: PagedList<MovieFavorite>? ->
-//                mMovieFavorite = favoriteList
-//            })
-
-//        val factory = MovieFavoriteViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
 
         viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mMovieFavorite = movieFavorites

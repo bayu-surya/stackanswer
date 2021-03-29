@@ -16,31 +16,11 @@ import io.reactivex.schedulers.Schedulers
 class DetailMovieKtRepository(
     private val remoteDataSource: RemoteDataSourceKt,
     private val localDataSource: LocalDataSource
-//    ,
-//    private val appExecutors: AppExecutors
 ) : IDetailMovieRepository {
-
-//    companion object {
-//        @Volatile
-//        private var instance: DetailMovieKtRepository? = null
-//
-//        fun getInstance(
-//            remoteData: RemoteDataSourceKt,
-//            localData: LocalDataSource,
-//            appExecutors: AppExecutors
-//        ): DetailMovieKtRepository =
-//            instance ?: synchronized(this) {
-//                instance ?: DetailMovieKtRepository(remoteData,
-//                        localData,
-//                        appExecutors)
-//            }
-//    }
 
     override fun getAllTourism(id: String): Flowable<Resource<List<MoviePopular>>> =
         object : NetworkBoundResource<List<MoviePopular>, DetailMovieResponse>() {
             override fun loadFromDB(): Flowable<List<MoviePopular>> {
-//                Flowable<List<MoviePopular>> a= localDataSource.getAllTourism().map { it };
-//                return a
                 return localDataSource.getAllTourism().map { it }
             }
 
@@ -61,22 +41,5 @@ class DetailMovieKtRepository(
                     .subscribe()
             }
         }.asFlowable()
-
-//    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-
-//    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
-//        return localDataSource.getFavoriteTourism().map { DataMapper.mapEntitiesToDomain(it) }
-//    }
-//
-//    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
-//        val tourismEntity = DataMapper.mapDomainToEntity(tourism)
-//        appExecutors.diskIO().execute { localDataSource.setFavoriteTourism(tourismEntity, state) }
-//    }
 }
 

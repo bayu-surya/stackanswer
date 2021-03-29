@@ -24,11 +24,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieKtFragment : Fragment(), View.OnClickListener {
 
-//    var viewModel: DetailMovieViewModel? = null
-//    private var movieFavoriteViewModel: MovieFavoriteViewModel? = null
-//    private var movieFavoriteViewModel: MovieFavoriteViewModelKt? = null
-//    private var viewModel: DetailMovieViewModelKt? = null
-
     private val viewModel: DetailMovieViewModelKt by viewModel()
     private val movieFavoriteViewModel: MovieFavoriteViewModelKt by viewModel()
 
@@ -49,29 +44,6 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding!!.ivKembali.setOnClickListener(this)
         binding!!.ivFavorite.setOnClickListener(this)
-
-//        val factory = DetailMovieViewModelFactory.getInstance(activity)
-//        viewModel = ViewModelProvider(this, factory).get(DetailMovieViewModel::class.java)
-//        viewModel!!.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
-//            if (isLoading) {
-//                onStartProggress()
-//            } else {
-//                onStopProggress()
-//            }
-//        })
-
-//        val factory = DetailMovieViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory).get(DetailMovieViewModelKt::class.java)
-
-//        val factory2 = MovieFavoriteViewModelFactory.getInstance(context)
-//        movieFavoriteViewModel = ViewModelProvider(this, factory2).get(MovieFavoriteViewModel::class.java)
-//        movieFavoriteViewModel!!.allMovie.observe(viewLifecycleOwner, { favoriteList: PagedList<MovieFavorite>? ->
-//            mMovieFavorites = favoriteList
-//            whileShow()
-//        })
-
-//        val factory2 = MovieFavoriteViewModelFactory.getInstance(requireActivity())
-//        movieFavoriteViewModel = ViewModelProvider(this, factory2)[MovieFavoriteViewModelKt::class.java]
 
         movieFavoriteViewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mMovieFavorites = movieFavorites
@@ -111,12 +83,6 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
             if (arguments.containsKey(DetailMovieKtFragment::class.java.simpleName)) {
                 film = arguments.getParcelable(DetailMovieKtFragment::class.java.simpleName)
                 requireArguments().remove(DetailMovieKtFragment::class.java.simpleName)
-
-//                viewModel!!.getMovie().observe(viewLifecycleOwner, { shows: Movie ->
-//                    setupFilm(shows)
-//                    Log.d(TAG, "onViewCreated: $shows")
-//                })
-//                viewModel!!.findDetailMovie("en-US", film!!.id.toString())
 
                 viewModel.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
                     if (tourism != null) {

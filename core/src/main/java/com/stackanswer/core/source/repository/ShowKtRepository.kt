@@ -16,25 +16,7 @@ import io.reactivex.schedulers.Schedulers
 class ShowKtRepository(
     private val remoteDataSource: RemoteDataSourceKt,
     private val localDataSource: LocalShowDataSource
-//    ,
-//    private val appExecutors: AppExecutors
 ) : IShowRepository {
-
-//    companion object {
-//        @Volatile
-//        private var instance: ShowKtRepository? = null
-//
-//        fun getInstance(
-//            remoteData: RemoteDataSourceKt,
-//            localData: LocalShowDataSource,
-//            appExecutors: AppExecutors
-//        ): ShowKtRepository =
-//            instance ?: synchronized(this) {
-//                instance ?: ShowKtRepository(remoteData,
-//                        localData,
-//                        appExecutors)
-//            }
-//    }
 
     override fun getAllTourism(): Flowable<Resource<List<ShowPopular>>> =
         object : NetworkBoundResource<List<ShowPopular>, List<ResultsShowItem>>() {
@@ -57,22 +39,5 @@ class ShowKtRepository(
                     .subscribe()
             }
         }.asFlowable()
-
-//    override fun getFavoriteTourism(): Flowable<List<ShowPopular>> {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun setFavoriteTourism(tourism: ShowPopular, state: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-
-//    override fun getFavoriteTourism(): Flowable<List<ShowPopular>> {
-//        return localDataSource.getFavoriteTourism().map { DataMapper.mapEntitiesToDomain(it) }
-//    }
-//
-//    override fun setFavoriteTourism(tourism: ShowPopular, state: Boolean) {
-//        val tourismEntity = DataMapper.mapDomainToEntity(tourism)
-//        appExecutors.diskIO().execute { localDataSource.setFavoriteTourism(tourismEntity, state) }
-//    }
 }
 

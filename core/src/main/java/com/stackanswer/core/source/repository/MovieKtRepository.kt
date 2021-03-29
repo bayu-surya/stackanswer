@@ -17,25 +17,7 @@ import io.reactivex.schedulers.Schedulers
 class MovieKtRepository(
     private val remoteDataSource: RemoteDataSourceKt,
     private val localDataSource: LocalDataSource
-//    ,
-//    private val appExecutors: AppExecutors
 ) : IMovieRepository {
-
-//    companion object {
-//        @Volatile
-//        private var instance: MovieKtRepository? = null
-//
-//        fun getInstance(
-//            remoteData: RemoteDataSourceKt,
-//            localData: LocalDataSource,
-//            appExecutors: AppExecutors
-//        ): MovieKtRepository =
-//            instance ?: synchronized(this) {
-//                instance ?: MovieKtRepository(remoteData,
-//                        localData,
-//                        appExecutors)
-//            }
-//    }
 
     override fun getAllTourism(): Flowable<Resource<List<MoviePopular>>> =
         object : NetworkBoundResource<List<MoviePopular>, List<ResultsItem>>() {
@@ -64,22 +46,5 @@ class MovieKtRepository(
                     .subscribe()
             }
         }.asFlowable()
-
-//    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-
-//    override fun getFavoriteTourism(): Flowable<List<MoviePopular>> {
-//        return localDataSource.getFavoriteTourism().map { DataMapper.mapEntitiesToDomain(it) }
-//    }
-//
-//    override fun setFavoriteTourism(tourism: MoviePopular, state: Boolean) {
-//        val tourismEntity = DataMapper.mapDomainToEntity(tourism)
-//        appExecutors.diskIO().execute { localDataSource.setFavoriteTourism(tourismEntity, state) }
-//    }
 }
 

@@ -44,7 +44,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:src="@drawable/ikon_setting3"
-                android:layout_marginEnd="@dimen/_5sdp"/>
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:contentDescription="@string/app_name" />
 
             <ImageView
                 android:id="@+id/iv_kembali"

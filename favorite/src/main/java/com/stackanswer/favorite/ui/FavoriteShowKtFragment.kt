@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.favorite.R
 import com.stackanswer.favorite.adapter.ShowFavoriteKtAdapter
-import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import com.stackanswer.favorite.databinding.FragmentFavoriteShowBinding
+import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteShowKtFragment : Fragment() {
@@ -21,7 +21,6 @@ class FavoriteShowKtFragment : Fragment() {
     private var binding: FragmentFavoriteShowBinding? = null
     private var adapter: ShowFavoriteKtAdapter? = null
 
-//    private var viewModel: ShowFavoriteViewModelKt? = null
     private val viewModel: ShowFavoriteViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +32,6 @@ class FavoriteShowKtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val factory = ShowFavoriteViewModelFactory.getInstance(context)
-//        val showFavoriteViewModel = ViewModelProvider(this, factory).get(ShowFavoriteViewModel::class.java)
-
-//        val factory = ShowFavoriteViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory)[ShowFavoriteViewModelKt::class.java]
-
         onStartProggress()
         rvMovie = binding!!.rvShow
 
@@ -47,8 +40,6 @@ class FavoriteShowKtFragment : Fragment() {
             Handler().postDelayed({ onStopProggress() }, 2000)
         })
 
-//        setupRVmovie()
-//        showFavoriteViewModel.allShow.observe(viewLifecycleOwner, { movieFavorites: PagedList<ShowFavorite?> -> adapter!!.submitList(movieFavorites) })
     }
 
     private fun setupRVmovie( filmList: List<ShowFavorite> ) {

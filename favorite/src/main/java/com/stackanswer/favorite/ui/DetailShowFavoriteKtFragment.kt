@@ -13,8 +13,8 @@ import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.core.utils.Constan
 import com.stackanswer.core.utils.ImageUtils
 import com.stackanswer.favorite.R
-import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import com.stackanswer.favorite.databinding.FragmentDetailShowFavoriteBinding
+import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailShowFavoriteKtFragment : Fragment(), View.OnClickListener {
@@ -23,8 +23,6 @@ class DetailShowFavoriteKtFragment : Fragment(), View.OnClickListener {
     private var mShowFavorite: List<ShowFavorite>? = null
     private var film: ShowFavorite? = null
     private var bSave = true
-//    private var viewModel: ShowFavoriteViewModel? = null
-//    private var viewModel: ShowFavoriteViewModelKt? = null
 
     private val viewModel: ShowFavoriteViewModelKt by viewModel()
 
@@ -40,17 +38,6 @@ class DetailShowFavoriteKtFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding!!.ivKembali.setOnClickListener(this)
         binding!!.ivFavorite.setOnClickListener(this)
-
-//        val factory2 = ShowFavoriteViewModelFactory.getInstance(context)
-//        viewModel = ViewModelProvider(this, factory2).get(ShowFavoriteViewModel::class.java)
-//        viewModel!!.allShow.observe(
-//            viewLifecycleOwner,
-//            { favoriteList: PagedList<ShowFavorite>? ->
-//                mShowFavorite = favoriteList
-//            })
-
-//        val factory = ShowFavoriteViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory)[ShowFavoriteViewModelKt::class.java]
 
         viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mShowFavorite = movieFavorites

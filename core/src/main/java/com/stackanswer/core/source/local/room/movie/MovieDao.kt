@@ -15,8 +15,4 @@ interface MovieDao {
 
     @Update
     fun updateFavoriteTourism(tourism: MoviePopular)
-
-    @Query("SELECT * FROM moviepopular ")
-//    where isFavorite = 1
-    fun getFavoriteTourism(): Flowable<List<MoviePopular>>
 }

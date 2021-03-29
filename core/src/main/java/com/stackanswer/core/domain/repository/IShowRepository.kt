@@ -8,8 +8,4 @@ interface IShowRepository {
 
     fun getAllTourism(): Flowable<Resource<List<ShowPopular>>>
 
-//    fun getFavoriteTourism(): Flowable<List<ShowPopular>>
-//
-//    fun setFavoriteTourism(tourism: ShowPopular, state: Boolean)
-
 }

@@ -15,8 +15,4 @@ interface ShowDao {
 
     @Update
     fun updateFavoriteTourism(tourism: ShowPopular)
-
-    @Query("SELECT * FROM showpopular ")
-//    where isFavorite = 1
-    fun getFavoriteTourism(): Flowable<List<ShowPopular>>
 }

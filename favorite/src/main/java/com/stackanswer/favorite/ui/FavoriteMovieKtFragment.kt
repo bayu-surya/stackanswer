@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
-import com.stackanswer.favorite.adapter.MovieFavoriteKtAdapter
-import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
 import com.stackanswer.favorite.R
+import com.stackanswer.favorite.adapter.MovieFavoriteKtAdapter
 import com.stackanswer.favorite.databinding.FragmentFavoriteMovieBinding
+import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -22,7 +22,6 @@ class FavoriteMovieKtFragment : Fragment() {
     private var binding: FragmentFavoriteMovieBinding? = null
     private var adapter: MovieFavoriteKtAdapter? = null
 
-//    private var viewModel: MovieFavoriteViewModelKt? = null
     private val viewModel: MovieFavoriteViewModelKt by viewModel()
 
     override fun onCreateView(
@@ -35,13 +34,6 @@ class FavoriteMovieKtFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val factory = MovieFavoriteViewModelFactory.getInstance(context)
-//        val movieFavoriteViewModel = ViewModelProvider(this, factory).get(
-//            MovieFavoriteViewModel::class.java
-//        )
-
-//        val factory = MovieFavoriteViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory)[MovieFavoriteViewModelKt::class.java]
 
         onStartProggress()
         rvMovie = binding!!.rvMovie
@@ -50,12 +42,6 @@ class FavoriteMovieKtFragment : Fragment() {
             setupRVmovie(movieFavorites)
             Handler().postDelayed({ onStopProggress() }, 2000)
         }
-
-//        viewModel.allMovie.observe(viewLifecycleOwner, { movieFavorites: PagedList<MoviePopular?> ->
-//                adapter!!.submitList(
-//                    movieFavorites
-//                )
-//            })
     }
 
     private fun setupRVmovie(filmList: List<MovieFavorite>) {

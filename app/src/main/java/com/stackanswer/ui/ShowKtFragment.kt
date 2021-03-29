@@ -22,7 +22,6 @@ class ShowKtFragment : Fragment() {
     private var rvMovie: RecyclerView? = null
     private var binding: FragmentShowBinding? = null
 
-//    private var viewModel: ShowViewModelKt? = null
     private val viewModel: ShowViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +32,6 @@ class ShowKtFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        val factory = ShowViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory).get(ShowViewModelKt::class.java)
 
         viewModel.tourism.observe(viewLifecycleOwner, { tourism ->
             if (tourism != null) {
@@ -54,27 +50,6 @@ class ShowKtFragment : Fragment() {
 
         rvMovie = binding!!.rvShow
 
-//        val factory = ShowViewModelFactory.getInstance(activity)
-//        val viewModel = ViewModelProvider(this, factory).get(ShowViewModel::class.java)
-//        viewModel.show.observe(viewLifecycleOwner, { shows: List<Show> ->
-//            setupRVmovie(shows)
-//            Log.d(TAG, "onViewCreated: " + shows.size)
-//        })
-//        viewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
-//            if (isLoading) {
-//                onStartProggress()
-//
-////                Test idling resource
-//                EspressoIdlingResourceShow.increment()
-//            } else {
-//                onStopProggress()
-//                if (!EspressoIdlingResourceShow.getEspressoIdlingResource().isIdleNow) {
-//                    EspressoIdlingResourceShow.decrement()
-//                }
-//            }
-//        })
-//        rvMovie = binding!!.rvShow
-//        viewModel.findShow("en-US", "1")
     }
 
     private fun onStartProggress() {

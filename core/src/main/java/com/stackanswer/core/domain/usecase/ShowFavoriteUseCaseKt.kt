@@ -8,5 +8,4 @@ interface ShowFavoriteUseCaseKt {
     fun setFavoriteTourism(tourism: ShowFavorite, state: Boolean)
     fun updateFavoriteTourism(tourism: ShowFavorite, state: Boolean)
     fun deleteFavoriteTourism(tourism: ShowFavorite, state: Boolean)
-//    fun deleteAllFavoriteTourism()
 }

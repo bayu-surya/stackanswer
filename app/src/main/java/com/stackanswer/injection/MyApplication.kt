@@ -22,12 +22,6 @@ class MyApplication : Application() {
                     showDatabaseModule,
                     movieFavoriteDatabaseModule,
                     showFavoriteDatabaseModule
-//                    showKtRepositoryModule,
-//                    movieKtRepositoryModule,
-//                    showFavoriteKtRepositoryModule,
-//                    movieFavoriteKtRepositoryModule,
-//                    detailShowKtRepositoryModule,
-//                    detailMovieKtRepositoryModule
                 )
             )
         }

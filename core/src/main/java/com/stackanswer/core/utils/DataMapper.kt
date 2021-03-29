@@ -140,21 +140,6 @@ object DataMapper {
         if (input.isNotEmpty()) {
             input.map {
                 val movieItem = MoviePopular(
-//                    id = it.id,
-//                    overview = it.overview,
-//                    originalLanguage = if(it.originalLanguage!=null) it.originalLanguage else "",
-//                    originalTitle = it.originalTitle,
-//                    video = it.video,
-//                    title = it.title,
-//                    genreIds = it.title,
-//                    posterPath = it.posterPath,
-//                    backdropPath = it.backdropPath,
-//                    releaseDate = it.releaseDate,
-//                    popularity = it.popularity,
-//                    voteAverage = it.voteAverage,
-//                    adult = it.adult,
-//                    voteCount = it.voteCount
-
                         id = it.id ?: 0,
                         overview = it.overview ?: "",
                         originalLanguage = it.originalLanguage ?: "",
@@ -253,31 +238,4 @@ object DataMapper {
 
         return show
     }
-
-//    fun mapEntitiesToDomain(input: List<MoviePopular>): List<MoviePopular> =
-//            input.map {
-//                MoviePopular(
-//                        tourismId = it.tourismId,
-//                        description = it.description,
-//                        name = it.name,
-//                        address = it.address,
-//                        latitude = it.latitude,
-//                        longitude = it.longitude,
-//                        like = it.like,
-//                        image = it.image,
-//                        isFavorite = it.isFavorite
-//                )
-//            }
-
-//    fun mapDomainToEntity(input: Tourism) = MoviePopular(
-//            tourismId = input.tourismId,
-//            description = input.description,
-//            name = input.name,
-//            address = input.address,
-//            latitude = input.latitude,
-//            longitude = input.longitude,
-//            like = input.like,
-//            image = input.image,
-//            isFavorite = input.isFavorite
-//    )
 }

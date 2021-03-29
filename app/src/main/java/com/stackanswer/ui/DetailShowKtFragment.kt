@@ -23,11 +23,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailShowKtFragment : Fragment(), View.OnClickListener {
 
-//    private var viewModel: DetailShowViewModel? = null
-//    private var showFavoriteViewModel: ShowFavoriteViewModel? = null
-//    private var showFavoriteViewModel: ShowFavoriteViewModelKt? = null
-//    private var viewModel: DetailShowViewModelKt? = null
-
     private val viewModel: DetailShowViewModelKt by viewModel()
     private val showFavoriteViewModel: ShowFavoriteViewModelKt by viewModel()
 
@@ -50,36 +45,6 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
         binding!!.ivKembali.setOnClickListener(this)
         binding!!.ivFavorite.setOnClickListener(this)
 
-//        val factory = DetailShowViewModelFactory.getInstance(activity)
-//        viewModel = ViewModelProvider(this, factory).get(DetailShowViewModel::class.java)
-//        viewModel!!.isLoading.observe(
-//            viewLifecycleOwner,
-//            { isLoading: Boolean ->
-//                if (isLoading) {
-//                    onStartProggress()
-//
-////                Test idling resource
-//                    EspressoIdlingResourceDetail2.increment()
-//                } else {
-//                    onStopProggress()
-//                    if (!EspressoIdlingResourceDetail2.getEspressoIdlingResource().isIdleNow) {
-//                        EspressoIdlingResourceDetail2.decrement()
-//                    }
-//                }
-//            })
-
-//        val factory = DetailShowViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory).get(DetailShowViewModelKt::class.java)
-
-//        val factory2 = ShowFavoriteViewModelFactory.getInstance(context)
-//        showFavoriteViewModel = ViewModelProvider(this, factory2).get(ShowFavoriteViewModel::class.java)
-//        showFavoriteViewModel!!.allShow.observe(viewLifecycleOwner, { favoriteList: PagedList<ShowFavorite>? ->
-//            mShowFavorite = favoriteList
-//            whileShow()
-//        })
-
-//        val factory2 = ShowFavoriteViewModelFactory.getInstance(requireActivity())
-//        showFavoriteViewModel = ViewModelProvider(this, factory2)[ShowFavoriteViewModelKt::class.java]
         showFavoriteViewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mShowFavorite = movieFavorites
             whileShow()
@@ -123,12 +88,6 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
             if (arguments.containsKey(DetailShowKtFragment::class.java.simpleName)) {
                 film = arguments.getParcelable(DetailShowKtFragment::class.java.simpleName)
                 requireArguments().remove(DetailShowKtFragment::class.java.simpleName)
-
-//                viewModel!!.getShow().observe(viewLifecycleOwner, { shows: Show ->
-//                    setupFilm(shows)
-//                    Log.d(TAG, "onViewCreated: $shows")
-//                })
-//                viewModel!!.findDetailShow("en-US", film!!.id.toString())
 
                 viewModel.tourism("" + film?.id).observe(viewLifecycleOwner, { tourism ->
                     if (tourism != null) {

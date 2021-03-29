@@ -25,10 +25,6 @@ class MovieKtFragment : Fragment() {
 
     private val viewModel: MovieViewModelKt by viewModel()
 
-//    private var viewModel: MovieViewModelKt? = null
-//    var viewModel: MovieViewModel? = null
-//    fun MovieFragment() {}
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentMovieBinding.inflate(layoutInflater)
@@ -37,9 +33,6 @@ class MovieKtFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        val factory = ViewModelFactory.getInstance(requireActivity())
-//        viewModel = ViewModelProvider(this, factory).get(MovieViewModelKt::class.java)
 
         viewModel.tourism.observe(viewLifecycleOwner) { tourism ->
             if (tourism != null) {
@@ -61,22 +54,6 @@ class MovieKtFragment : Fragment() {
                 }
             }
         }
-
-
-//        val factory = ViewModelFactory.getInstance(activity)
-//        viewModel = ViewModelProvider(this, factory).get(MovieViewModel::class.java)
-//        viewModel!!.movie.observe(viewLifecycleOwner, { shows: List<Movie> ->
-//            setupRVmovie(shows)
-//            Log.d(TAG, "onViewCreated: " + shows.size)
-//        })
-//        viewModel!!.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
-//            if (isLoading) {
-//                onStartProggress()
-//            } else {
-//                onStopProggress()
-//            }
-//        })
-//        viewModel!!.findMovie("en-US", "1")
 
         rvMovie = binding!!.rvMovie
     }

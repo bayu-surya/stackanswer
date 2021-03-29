@@ -7,19 +7,4 @@ import androidx.room.RoomDatabase
 abstract class ShowDatabase : RoomDatabase() {
 
     abstract fun tourismDao(): ShowDao
-
-//    companion object {
-//        @Volatile
-//        private var INSTANCE: ShowDatabase? = null
-//
-//        fun getInstance(context: Context): ShowDatabase =
-//            INSTANCE ?: synchronized(this) {
-//            val instance = Room.databaseBuilder(context.applicationContext,
-//                ShowDatabase::class.java, "show2_database")
-//                .fallbackToDestructiveMigration()
-//                .build()
-//            INSTANCE = instance
-//            instance
-//        }
-//    }
 }

@@ -16,20 +16,10 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 class RemoteDataSourceKt(private val apiService: ApiService) {
-//    companion object {
-//        @Volatile
-//        private var instance: RemoteDataSourceKt? = null
-//
-//        fun getInstance(service: ApiService): RemoteDataSourceKt =
-//            instance ?: synchronized(this) {
-//                instance ?: RemoteDataSourceKt(service)
-//            }
-//    }
 
     @SuppressLint("CheckResult")
     fun getAllDetailShowPopular(id: String): Flowable<ApiResponse<DetailShowResponse>> {
         val resultData = PublishSubject.create<ApiResponse<DetailShowResponse>>()
-//                .
         //get data from remote api
         val client = apiService.getDetailShowPopuler(id, BuildConfig.API_KEY, "en-US" )
 
@@ -102,18 +92,6 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
             Log.e("RemoteDataSource", error.toString())
         })
 
-//        client
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .take(1)
-//                .subscribe({ response ->
-//                    val dataArray = response.places
-//                    resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-//                }, { error ->
-//                    resultData.onNext(ApiResponse.Error(error.message.toString()))
-//                    Log.e("RemoteDataSource", error.toString())
-//                })
-
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
 
@@ -140,19 +118,6 @@ class RemoteDataSourceKt(private val apiService: ApiService) {
             resultData.onNext(ApiResponse.Error(error.message.toString()))
             Log.e("RemoteDataSource", error.toString())
         })
-
-//        client
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .take(1)
-//                .subscribe({ response ->
-//                    val dataArray = response.places
-//                    resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-//                }, { error ->
-//                    resultData.onNext(ApiResponse.Error(error.message.toString()))
-//                    Log.e("RemoteDataSource", error.toString())
-//                })
-
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
 }
