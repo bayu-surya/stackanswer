@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
 import com.stackanswer.adapter.ShowAdapter
+import com.stackanswer.core.model.Show
+import com.stackanswer.core.source.Resource
+import com.stackanswer.core.utils.DataMapper
 import com.stackanswer.databinding.FragmentShowBinding
-import com.stackanswer.model.Show
-import com.stackanswer.source.Resource
-import com.stackanswer.utils.DataMapper
 import com.stackanswer.viewmodel.ShowViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 

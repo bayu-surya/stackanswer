@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.stackanswer.core.domain.usecase.DetailMovieUseCaseKt
-import com.stackanswer.source.Resource
-import com.stackanswer.source.local.room.movie.MoviePopular
+import com.stackanswer.core.source.Resource
+import com.stackanswer.core.source.local.room.movie.MoviePopular
 
 class DetailMovieViewModelKt (tourismUseCase: DetailMovieUseCaseKt) : ViewModel() {
     private val  to = tourismUseCase

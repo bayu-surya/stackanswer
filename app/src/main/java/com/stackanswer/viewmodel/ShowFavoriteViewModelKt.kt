@@ -3,7 +3,7 @@ package com.stackanswer.viewmodel
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.stackanswer.core.domain.usecase.ShowFavoriteUseCaseKt
-import com.stackanswer.source.local.room.showfavorite.ShowFavorite
+import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
 
 class ShowFavoriteViewModelKt (tourismUseCase: ShowFavoriteUseCaseKt) : ViewModel() {
 

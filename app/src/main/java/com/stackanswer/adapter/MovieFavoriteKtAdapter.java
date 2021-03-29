@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.stackanswer.BuildConfig;
 import com.stackanswer.R;
-import com.stackanswer.source.local.room.moviefavorite.MovieFavorite;
-import com.stackanswer.utils.ImageUtils;
+import com.stackanswer.core.BuildConfig;
+import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite;
+import com.stackanswer.core.utils.ImageUtils;
 
 import java.util.List;
 

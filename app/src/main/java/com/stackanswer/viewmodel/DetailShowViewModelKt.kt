@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.stackanswer.core.domain.usecase.DetailShowUseCaseKt
-import com.stackanswer.source.Resource
-import com.stackanswer.source.local.room.show.ShowPopular
+import com.stackanswer.core.source.Resource
+import com.stackanswer.core.source.local.room.show.ShowPopular
 
 class DetailShowViewModelKt (tourismUseCase: DetailShowUseCaseKt) : ViewModel() {
      private val  to = tourismUseCase

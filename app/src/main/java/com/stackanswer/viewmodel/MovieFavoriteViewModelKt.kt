@@ -3,7 +3,7 @@ package com.stackanswer.viewmodel
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
 import com.stackanswer.core.domain.usecase.MovieFavoriteUseCaseKt
-import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
+import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
 
 class MovieFavoriteViewModelKt (tourismUseCase: MovieFavoriteUseCaseKt) : ViewModel() {
 

@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
 import com.stackanswer.adapter.MovieAdapter
+import com.stackanswer.core.model.Movie
+import com.stackanswer.core.source.Resource
+import com.stackanswer.core.utils.DataMapper
 import com.stackanswer.databinding.FragmentMovieBinding
-import com.stackanswer.model.Movie
-import com.stackanswer.source.Resource
-import com.stackanswer.utils.DataMapper
 import com.stackanswer.viewmodel.MovieViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -41,7 +41,7 @@ class MovieKtFragment : Fragment() {
 //        val factory = ViewModelFactory.getInstance(requireActivity())
 //        viewModel = ViewModelProvider(this, factory).get(MovieViewModelKt::class.java)
 
-        viewModel.tourism.observe(viewLifecycleOwner, { tourism ->
+        viewModel.tourism.observe(viewLifecycleOwner) { tourism ->
             if (tourism != null) {
                 when (tourism) {
                     is Resource.Loading -> {
@@ -51,7 +51,8 @@ class MovieKtFragment : Fragment() {
                     is Resource.Success -> {
                         Log.d("TAG", "loadFromDB: 5")
                         onStopProggress()
-                        tourism.data?.let { DataMapper.mapMovieToDomain(it) }?.let { setupRVmovie(it) }
+                        tourism.data?.let { DataMapper.mapMovieToDomain(it) }
+                            ?.let { setupRVmovie(it) }
                     }
                     is Resource.Error -> {
                         Log.d("TAG", "loadFromDB: 6")
@@ -59,7 +60,7 @@ class MovieKtFragment : Fragment() {
                     }
                 }
             }
-        })
+        }
 
 
 //        val factory = ViewModelFactory.getInstance(activity)
@@ -96,10 +97,10 @@ class MovieKtFragment : Fragment() {
                 fragment.arguments = b
                 val backStateName = HomeFragment::class.java.simpleName
                 mFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.container_layout, fragment, fragment.javaClass.simpleName)
-                        .addToBackStack(backStateName)
-                        .commit()
+                    .beginTransaction()
+                    .replace(R.id.container_layout, fragment, fragment.javaClass.simpleName)
+                    .addToBackStack(backStateName)
+                    .commit()
             }
         }
     }

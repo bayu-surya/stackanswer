@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.stackanswer.BuildConfig
 import com.stackanswer.R
+import com.stackanswer.core.BuildConfig
+import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
+import com.stackanswer.core.utils.Constan
+import com.stackanswer.core.utils.ImageUtils
 import com.stackanswer.databinding.FragmentDetailShowFavoriteBinding
-import com.stackanswer.source.local.room.showfavorite.ShowFavorite
-import com.stackanswer.utils.Constan
-import com.stackanswer.utils.ImageUtils
 import com.stackanswer.viewmodel.ShowFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 

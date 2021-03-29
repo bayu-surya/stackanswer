@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
 import com.stackanswer.adapter.MovieFavoriteKtAdapter
+import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.databinding.FragmentFavoriteMovieBinding
-import com.stackanswer.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.viewmodel.MovieFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -46,10 +46,10 @@ class FavoriteMovieKtFragment : Fragment() {
         onStartProggress()
         rvMovie = binding!!.rvMovie
 
-        viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
+        viewModel.tourism.observe(viewLifecycleOwner) { movieFavorites ->
             setupRVmovie(movieFavorites)
             Handler().postDelayed({ onStopProggress() }, 2000)
-        })
+        }
 
 //        viewModel.allMovie.observe(viewLifecycleOwner, { movieFavorites: PagedList<MoviePopular?> ->
 //                adapter!!.submitList(

@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.R
 import com.stackanswer.adapter.ShowFavoriteKtAdapter
+import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.databinding.FragmentFavoriteShowBinding
-import com.stackanswer.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.viewmodel.ShowFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
