@@ -1,4 +1,4 @@
-package com.stackanswer.favorite
+package com.stackanswer.favorite.ui
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
+import com.stackanswer.favorite.adapter.MovieFavoriteKtAdapter
+import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
+import com.stackanswer.favorite.R
 import com.stackanswer.favorite.databinding.FragmentFavoriteMovieBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -56,7 +59,9 @@ class FavoriteMovieKtFragment : Fragment() {
     }
 
     private fun setupRVmovie(filmList: List<MovieFavorite>) {
-        adapter = MovieFavoriteKtAdapter(context, filmList)
+        adapter =
+            MovieFavoriteKtAdapter(context,
+                filmList)
         rvMovie!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvMovie!!.adapter = adapter
         adapter!!.setCallback { films: MovieFavorite?, _: Int ->

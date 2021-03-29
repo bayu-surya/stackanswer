@@ -1,4 +1,4 @@
-package com.stackanswer.favorite;
+package com.stackanswer.favorite.adapter;
 
 import android.content.Context;
 

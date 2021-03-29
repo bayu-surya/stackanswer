@@ -1,4 +1,4 @@
-package com.stackanswer.favorite
+package com.stackanswer.favorite.ui
 
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -12,6 +12,8 @@ import com.stackanswer.core.BuildConfig
 import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite
 import com.stackanswer.core.utils.Constan
 import com.stackanswer.core.utils.ImageUtils
+import com.stackanswer.favorite.R
+import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import com.stackanswer.favorite.databinding.FragmentDetailShowFavoriteBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 

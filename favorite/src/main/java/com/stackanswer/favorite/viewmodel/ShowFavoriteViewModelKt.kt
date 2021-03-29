@@ -1,4 +1,4 @@
-package com.stackanswer.favorite
+package com.stackanswer.favorite.viewmodel
 
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel

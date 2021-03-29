@@ -1,9 +1,11 @@
-package com.stackanswer.favorite
+package com.stackanswer.favorite.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.stackanswer.favorite.R
 import com.stackanswer.favorite.databinding.ActivityFavoriteBinding
+import com.stackanswer.favorite.injection.favoriteModule
 import org.koin.core.context.loadKoinModules
 
 class FavoriteActivity : AppCompatActivity() {

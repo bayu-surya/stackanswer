@@ -1,4 +1,4 @@
-package com.stackanswer.favorite;
+package com.stackanswer.favorite.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,24 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.stackanswer.core.BuildConfig;
-import com.stackanswer.core.source.local.room.showfavorite.ShowFavorite;
+import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite;
 import com.stackanswer.core.utils.ImageUtils;
+import com.stackanswer.favorite.R;
 
 import java.util.List;
 
-public class ShowFavoriteKtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MovieFavoriteKtAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
-    private final List<ShowFavorite> filmList;
+    private final List<MovieFavorite> filmList;
     private Callback callback;
 
-    public ShowFavoriteKtAdapter(Context context, List<ShowFavorite> filmList) {
+    public MovieFavoriteKtAdapter(Context context, List<MovieFavorite> filmList) {
         this.context = context;
         this.filmList = filmList;
     }
 
     public interface Callback{
-        void onItemClick(ShowFavorite film, int position);
+        void onItemClick(MovieFavorite film, int position);
     }
 
     public void setCallback(Callback callback) {
@@ -51,12 +52,12 @@ public class ShowFavoriteKtAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
-        final ShowFavorite film = filmList.get(position);
+        final MovieFavorite film = filmList.get(position);
         ViewHolderOne viewHolderOne = (ViewHolderOne) holder;
 
         String url= BuildConfig.BASE_URL_IMAGE +film.getPosterPath();
         ImageUtils.fromUrlWithSize(context, url, viewHolderOne.ivGambar, 100, 140);
-        viewHolderOne.tvJudul.setText(film.getName());
+        viewHolderOne.tvJudul.setText(film.getTitle());
         viewHolderOne.tvDetail.setText(film.getOverview());
 
         viewHolderOne.v.setOnClickListener(view -> callback.onItemClick(film, position));

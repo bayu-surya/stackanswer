@@ -1,5 +1,7 @@
-package com.stackanswer.favorite
+package com.stackanswer.favorite.injection
 
+import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
+import com.stackanswer.favorite.viewmodel.ShowFavoriteViewModelKt
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
