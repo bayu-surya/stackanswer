@@ -1,4 +1,4 @@
-package com.stackanswer.favorite
+package com.stackanswer.core
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

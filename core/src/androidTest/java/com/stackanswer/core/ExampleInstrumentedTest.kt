@@ -1,4 +1,4 @@
-package com.stackanswer.favorite
+package com.stackanswer.core
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.stackanswer.favorite", appContext.packageName)
+        assertEquals("com.stackanswer.core.test", appContext.packageName)
     }
 }

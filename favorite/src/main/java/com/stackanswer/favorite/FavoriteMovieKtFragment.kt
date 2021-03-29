@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.stackanswer.core.source.local.room.moviefavorite.MovieFavorite
 import com.stackanswer.favorite.databinding.FragmentFavoriteMovieBinding
-import com.stackanswer.ui.MainActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
