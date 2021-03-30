@@ -7,7 +7,7 @@
     <string name="show_null">anda_tidak_memiliki_daftar tv show</string>
     <string name="load_more">Load More</string>
     <string name="mohon_tunggu">mohon_tunggu</string>
-    <string name="movie_null">anda_tidak_memiliki_daftar movie</string>
+    <string name="movie_null">anda tidak memiliki daftar movie</string>
     <string name="detail_tv_show">Detail TV Show</string>
     <string name="judul">Judul</string>
     <string name="rating">Rating</string>
