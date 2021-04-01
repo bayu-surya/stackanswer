@@ -22,9 +22,4 @@ class MovieFavoriteViewModelKt (tourismUseCase: MovieFavoriteUseCaseKt) : ViewMo
     fun deleteFavoriteTourism(tourism: MovieFavorite, newStatus:Boolean){
         to.deleteFavoriteTourism(tourism, newStatus)
     }
-
-//    fun deleteAllFavoriteTourism(){
-//        to.deleteAllFavoriteTourism()
-//    }
-
 }
