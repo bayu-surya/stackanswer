@@ -15,6 +15,8 @@ import com.stackanswer.core.source.network.ApiService
 import com.stackanswer.core.source.remote.response.RemoteDataSourceKt
 import com.stackanswer.core.source.repository.*
 import com.stackanswer.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -61,39 +63,55 @@ val repositoryModule = module {
 val movieDatabaseModule = module {
     factory { get<MovieDatabase>().tourismDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("stackanswer".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            MovieDatabase::class.java, "movie2_database"
-        ).fallbackToDestructiveMigration().build()
+            MovieDatabase::class.java, "movie2_database.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val movieFavoriteDatabaseModule = module {
     factory { get<MovieFavoriteDatabase>().movieDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("stackanswer".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            MovieFavoriteDatabase::class.java, "movie_database"
-        ).fallbackToDestructiveMigration().build()
+            MovieFavoriteDatabase::class.java, "movie_database.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val showDatabaseModule = module {
     factory { get<ShowDatabase>().tourismDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("stackanswer".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            ShowDatabase::class.java, "show2_database"
-        ).fallbackToDestructiveMigration().build()
+            ShowDatabase::class.java, "show2_database.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val showFavoriteDatabaseModule = module {
     factory { get<ShowFavoriteDatabase>().showDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("stackanswer".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            ShowFavoriteDatabase::class.java, "show_database"
-        ).fallbackToDestructiveMigration().build()
+            ShowFavoriteDatabase::class.java, "show_database.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
