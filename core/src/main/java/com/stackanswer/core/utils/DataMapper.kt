@@ -15,8 +15,10 @@ object DataMapper {
 
     fun mapDetailShowResponsesToEntities(input: DetailShowResponse): ShowPopular {
         val data = arrayListOf<String>()
-        for (i in input.genres!!.indices) {
-            data.add(input.genres[i]!!.name!!)
+        if (input.genres?.isNotEmpty() == true) {
+            for (i in input.genres.indices) {
+                input.genres[i]?.name?.let { data.add(it) }
+            }
         }
         return ShowPopular(
                 id = input.id ?: 0,
@@ -37,8 +39,10 @@ object DataMapper {
 
     fun mapDetailMovieResponsesToEntities(input: DetailMovieResponse): MoviePopular {
         val data = arrayListOf<String>()
-        for (i in input.genres!!.indices) {
-            data.add(input.genres[i]!!.name!!)
+        if (input.genres?.isNotEmpty() == true) {
+            for (i in input.genres.indices) {
+                input.genres[i]?.name?.let { data.add(it) }
+            }
         }
         return MoviePopular(
                 id = input.id ?: 0,

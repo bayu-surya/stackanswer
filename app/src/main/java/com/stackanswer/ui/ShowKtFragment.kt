@@ -20,14 +20,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class ShowKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
-    private var binding: FragmentShowBinding? = null
+    private lateinit var binding: FragmentShowBinding
 
     private val viewModel: ShowViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentShowBinding.inflate(layoutInflater)
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,33 +48,33 @@ class ShowKtFragment : Fragment() {
             }
         })
 
-        rvMovie = binding!!.rvShow
+        rvMovie = binding.rvShow
 
     }
 
     private fun onStartProggress() {
-        binding!!.shimmer.visibility = View.VISIBLE
-        binding!!.shimmer2.visibility = View.VISIBLE
-        binding!!.shimmer3.visibility = View.VISIBLE
-        binding!!.shimmer.startShimmerAnimation()
-        binding!!.shimmer2.startShimmerAnimation()
-        binding!!.shimmer3.startShimmerAnimation()
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer2.visibility = View.VISIBLE
+        binding.shimmer3.visibility = View.VISIBLE
+        binding.shimmer.startShimmerAnimation()
+        binding.shimmer2.startShimmerAnimation()
+        binding.shimmer3.startShimmerAnimation()
     }
 
     private fun onStopProggress() {
-        binding!!.shimmer.visibility = View.GONE
-        binding!!.shimmer2.visibility = View.GONE
-        binding!!.shimmer3.visibility = View.GONE
-        binding!!.shimmer.stopShimmerAnimation()
-        binding!!.shimmer2.stopShimmerAnimation()
-        binding!!.shimmer3.stopShimmerAnimation()
+        binding.shimmer.visibility = View.GONE
+        binding.shimmer2.visibility = View.GONE
+        binding.shimmer3.visibility = View.GONE
+        binding.shimmer.stopShimmerAnimation()
+        binding.shimmer2.stopShimmerAnimation()
+        binding.shimmer3.stopShimmerAnimation()
     }
 
     private fun setupRVmovie(filmList: List<Show>) {
         if (filmList.isNotEmpty()) {
             val adapter = ShowAdapter(context, filmList)
-            rvMovie!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            rvMovie!!.adapter = adapter
+            rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            rvMovie?.adapter = adapter
             adapter.setCallback { films: Show?, _: Int ->
                 val mFragmentManager = (requireContext() as FragmentActivity).supportFragmentManager
                 val fragment = DetailShowKtFragment()

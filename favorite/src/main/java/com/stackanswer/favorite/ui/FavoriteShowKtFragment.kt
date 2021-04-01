@@ -18,7 +18,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class FavoriteShowKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
-    private var binding: FragmentFavoriteShowBinding? = null
+    private lateinit var binding: FragmentFavoriteShowBinding
     private var adapter: ShowFavoriteKtAdapter? = null
 
     private val viewModel: ShowFavoriteViewModelKt by viewModel()
@@ -26,14 +26,14 @@ class FavoriteShowKtFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentFavoriteShowBinding.inflate(layoutInflater)
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         onStartProggress()
-        rvMovie = binding!!.rvShow
+        rvMovie = binding.rvShow
 
         viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             setupRVmovie(movieFavorites)
@@ -45,9 +45,9 @@ class FavoriteShowKtFragment : Fragment() {
     private fun setupRVmovie( filmList: List<ShowFavorite> ) {
         adapter = ShowFavoriteKtAdapter(context,
             filmList)
-        rvMovie!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rvMovie!!.adapter = adapter
-        adapter!!.setCallback { films: ShowFavorite?, _: Int ->
+        rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rvMovie?.adapter = adapter
+        adapter?.setCallback { films: ShowFavorite?, _: Int ->
             val fragment = DetailShowFavoriteKtFragment()
             val b = Bundle()
             b.putParcelable(fragment.javaClass.simpleName, films)
@@ -62,22 +62,22 @@ class FavoriteShowKtFragment : Fragment() {
     }
 
     private fun onStartProggress() {
-        binding!!.rvShow.visibility = View.GONE
-        binding!!.shimmer.visibility = View.VISIBLE
-        binding!!.shimmer2.visibility = View.VISIBLE
-        binding!!.shimmer3.visibility = View.VISIBLE
-        binding!!.shimmer.startShimmerAnimation()
-        binding!!.shimmer2.startShimmerAnimation()
-        binding!!.shimmer3.startShimmerAnimation()
+        binding.rvShow.visibility = View.GONE
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer2.visibility = View.VISIBLE
+        binding.shimmer3.visibility = View.VISIBLE
+        binding.shimmer.startShimmerAnimation()
+        binding.shimmer2.startShimmerAnimation()
+        binding.shimmer3.startShimmerAnimation()
     }
 
     private fun onStopProggress() {
-        binding!!.rvShow.visibility = View.VISIBLE
-        binding!!.shimmer.visibility = View.GONE
-        binding!!.shimmer2.visibility = View.GONE
-        binding!!.shimmer3.visibility = View.GONE
-        binding!!.shimmer.stopShimmerAnimation()
-        binding!!.shimmer2.stopShimmerAnimation()
-        binding!!.shimmer3.stopShimmerAnimation()
+        binding.rvShow.visibility = View.VISIBLE
+        binding.shimmer.visibility = View.GONE
+        binding.shimmer2.visibility = View.GONE
+        binding.shimmer3.visibility = View.GONE
+        binding.shimmer.stopShimmerAnimation()
+        binding.shimmer2.stopShimmerAnimation()
+        binding.shimmer3.stopShimmerAnimation()
     }
 }

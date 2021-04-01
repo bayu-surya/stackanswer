@@ -26,10 +26,10 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
     private val viewModel: DetailShowViewModelKt by viewModel()
     private val showFavoriteViewModel: ShowFavoriteViewModelKt by viewModel()
 
-    private var binding: FragmentDetailShowBinding? = null
-    private var mShowFavorite: List<ShowFavorite>? = null
+    private lateinit var binding: FragmentDetailShowBinding
+    private var mShowFavorite: List<ShowFavorite> = ArrayList()
     private var film: Show? = null
-    private var movie: Show? = null
+    private var movie: Show = Show()
     private var bSave = false
 
     override fun onCreateView(
@@ -37,13 +37,13 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailShowBinding.inflate(layoutInflater)
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding!!.ivKembali.setOnClickListener(this)
-        binding!!.ivFavorite.setOnClickListener(this)
+        binding.ivKembali.setOnClickListener(this)
+        binding.ivFavorite.setOnClickListener(this)
 
         showFavoriteViewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
             mShowFavorite = movieFavorites
@@ -69,9 +69,9 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
     }
 
     private fun ivFovorite() {
-        for (i in mShowFavorite!!.indices) {
-            if (mShowFavorite!![i].id == film!!.id) {
-                binding!!.ivFavorite.setColorFilter(
+        for (i in mShowFavorite.indices) {
+            if (mShowFavorite[i].id == film?.id ) {
+                binding.ivFavorite.setColorFilter(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.red_active
@@ -117,24 +117,24 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupFilm(show: Show) {
-        binding!!.tvDetailUtama.text = show.overview
-        binding!!.tvJudul.text = show.name
-        binding!!.tvBahasa.text = Constan.setBahasa(show.originalLanguage)
-        binding!!.tvTayang.text = show.firstAirDate
-        binding!!.tvRating.text = show.voteAverage.toString()
+        binding.tvDetailUtama.text = show.overview
+        binding.tvJudul.text = show.name
+        binding.tvBahasa.text = Constan.setBahasa(show.originalLanguage)
+        binding.tvTayang.text = show.firstAirDate
+        binding.tvRating.text = show.voteAverage.toString()
         var genre = show.genreIds?.toString()
         if (genre!=null) {
             if (show.genreIds.toString().contains("[") || show.genreIds.toString().contains("]")) {
                 genre = genre.replace("\\[".toRegex(), "").replace("]".toRegex(), "")
             }
         }
-        binding!!.tvGenre.text = genre
+        binding.tvGenre.text = genre
         if (show.posterPath != null && show.posterPath != "" && show.posterPath != "null") {
             val url = BuildConfig.BASE_URL_IMAGE + show.posterPath
-            ImageUtils.fromUrlWithSize(context, url, binding!!.ivPoster, 200, 280)
-            ImageUtils.fromUrlWithSize(context, url, binding!!.ivPoster4, 100, 140)
-            ImageUtils.fromUrlWithSize(context, url, binding!!.ivPoster3, 100, 140)
-            ImageUtils.fromUrlWithSize(context, url, binding!!.ivPoster2, 100, 140)
+            ImageUtils.fromUrlWithSize(context, url, binding.ivPoster, 200, 280)
+            ImageUtils.fromUrlWithSize(context, url, binding.ivPoster4, 100, 140)
+            ImageUtils.fromUrlWithSize(context, url, binding.ivPoster3, 100, 140)
+            ImageUtils.fromUrlWithSize(context, url, binding.ivPoster2, 100, 140)
         }
     }
 
@@ -145,7 +145,7 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
             if (!bSave) {
                 saveFavorite()
                 bSave = true
-                binding!!.ivFavorite.setColorFilter(
+                binding.ivFavorite.setColorFilter(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.red_active
@@ -154,55 +154,51 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
             } else {
                 deleteFavorite()
                 bSave = false
-                binding!!.ivFavorite.clearColorFilter()
+                binding.ivFavorite.clearColorFilter()
             }
         }
     }
 
     private fun saveFavorite() {
-        if (movie != null) {
-            val data = DataMapper.mapShowToShowDatabase(movie!!)
-            val k = IntArray(mShowFavorite!!.size)
-            for (m in mShowFavorite!!.indices) {
-                k[m] = mShowFavorite!![m].id
-                if (data.id == mShowFavorite!![m].id) {
-                    if (!Constan.compareObjects(data, mShowFavorite!![m])) {
-                        showFavoriteViewModel.updateFavoriteTourism(data, true)
-                    }
+        val data = DataMapper.mapShowToShowDatabase(movie)
+        val k = IntArray(mShowFavorite.size)
+        for (m in mShowFavorite.indices) {
+            k[m] = mShowFavorite[m].id
+            if (data.id == mShowFavorite[m].id) {
+                if (!Constan.compareObjects(data, mShowFavorite[m])) {
+                    showFavoriteViewModel.updateFavoriteTourism(data, true)
                 }
             }
-            if (!Constan.execute(k, data.id)) {
-                showFavoriteViewModel.setFavoriteTourism(data, true)
-            }
+        }
+        if (!Constan.execute(k, data.id)) {
+            showFavoriteViewModel.setFavoriteTourism(data, true)
         }
     }
 
     private fun deleteFavorite() {
-        if (movie != null) {
-            val data = DataMapper.mapShowToShowDatabase(movie!!)
-            showFavoriteViewModel.deleteFavoriteTourism(data, true)
-        }
+        val data = DataMapper.mapShowToShowDatabase(movie)
+        showFavoriteViewModel.deleteFavoriteTourism(data, true)
     }
 
     private fun onStartProggress() {
-        binding!!.ivFavorite.visibility = View.GONE
-        binding!!.clBody.visibility = View.GONE
-        binding!!.shimmer.visibility = View.VISIBLE
-        binding!!.shimmer2.visibility = View.VISIBLE
-        binding!!.shimmer3.visibility = View.VISIBLE
-        binding!!.shimmer.startShimmerAnimation()
-        binding!!.shimmer2.startShimmerAnimation()
-        binding!!.shimmer3.startShimmerAnimation()
+        binding.ivFavorite.visibility = View.GONE
+        binding.clBody.visibility = View.GONE
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer2.visibility = View.VISIBLE
+        binding.shimmer3.visibility = View.VISIBLE
+        binding.shimmer.startShimmerAnimation()
+        binding.shimmer2.startShimmerAnimation()
+        binding.shimmer3.startShimmerAnimation()
     }
 
     private fun onStopProggress() {
-        binding!!.ivFavorite.visibility = View.VISIBLE
-        binding!!.clBody.visibility = View.VISIBLE
-        binding!!.shimmer.visibility = View.GONE
-        binding!!.shimmer2.visibility = View.GONE
-        binding!!.shimmer3.visibility = View.GONE
-        binding!!.shimmer.stopShimmerAnimation()
-        binding!!.shimmer2.stopShimmerAnimation()
-        binding!!.shimmer3.stopShimmerAnimation()
+        binding.ivFavorite.visibility = View.VISIBLE
+        binding.clBody.visibility = View.VISIBLE
+        binding.shimmer.visibility = View.GONE
+        binding.shimmer2.visibility = View.GONE
+        binding.shimmer3.visibility = View.GONE
+        binding.shimmer.stopShimmerAnimation()
+        binding.shimmer2.stopShimmerAnimation()
+        binding.shimmer3.stopShimmerAnimation()
     }
 }

@@ -21,14 +21,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class MovieKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
-    private var binding: FragmentMovieBinding? = null
+    private lateinit var binding: FragmentMovieBinding
 
     private val viewModel: MovieViewModelKt by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentMovieBinding.inflate(layoutInflater)
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +55,7 @@ class MovieKtFragment : Fragment() {
             }
         }
 
-        rvMovie = binding!!.rvMovie
+        rvMovie = binding.rvMovie
     }
 
     private val TAG = "MainViewModel"
@@ -64,8 +64,8 @@ class MovieKtFragment : Fragment() {
         Log.d(TAG, "loadMovie: 2 " + filmList.size)
         if (filmList.isNotEmpty()) {
             val adapter = MovieAdapter(context, filmList)
-            rvMovie!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            rvMovie!!.adapter = adapter
+            rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            rvMovie?.adapter = adapter
             adapter.setCallback { films: Movie?, _: Int ->
                 val mFragmentManager = (requireContext() as FragmentActivity).supportFragmentManager
                 val fragment = DetailMovieKtFragment()
@@ -83,20 +83,20 @@ class MovieKtFragment : Fragment() {
     }
 
     private fun onStartProggress() {
-        binding!!.shimmer.visibility = View.VISIBLE
-        binding!!.shimmer2.visibility = View.VISIBLE
-        binding!!.shimmer3.visibility = View.VISIBLE
-        binding!!.shimmer.startShimmerAnimation()
-        binding!!.shimmer2.startShimmerAnimation()
-        binding!!.shimmer3.startShimmerAnimation()
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer2.visibility = View.VISIBLE
+        binding.shimmer3.visibility = View.VISIBLE
+        binding.shimmer.startShimmerAnimation()
+        binding.shimmer2.startShimmerAnimation()
+        binding.shimmer3.startShimmerAnimation()
     }
 
     private fun onStopProggress() {
-        binding!!.shimmer.visibility = View.GONE
-        binding!!.shimmer2.visibility = View.GONE
-        binding!!.shimmer3.visibility = View.GONE
-        binding!!.shimmer.stopShimmerAnimation()
-        binding!!.shimmer2.stopShimmerAnimation()
-        binding!!.shimmer3.stopShimmerAnimation()
+        binding.shimmer.visibility = View.GONE
+        binding.shimmer2.visibility = View.GONE
+        binding.shimmer3.visibility = View.GONE
+        binding.shimmer.stopShimmerAnimation()
+        binding.shimmer2.stopShimmerAnimation()
+        binding.shimmer3.stopShimmerAnimation()
     }
 }
