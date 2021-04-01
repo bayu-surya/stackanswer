@@ -1,3 +1,7 @@
+
+-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ListMovieResponse** {*;}
+-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ResultsItem** {*;}
+
 ##---------------Begin: proguard configuration for SQLCipher  ----------
 -keep,includedescriptorclasses class net.sqlcipher.** { *; }
 -keep,includedescriptorclasses interface net.sqlcipher.** { *; }
