@@ -3,6 +3,7 @@ package com.stackanswer.favorite.ui
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,7 +83,7 @@ class DetailMovieFavoriteKtFragment : Fragment(), View.OnClickListener {
             ImageUtils.fromUrlWithSize(context, url, binding.ivPoster3, 100, 140)
             ImageUtils.fromUrlWithSize(context, url, binding.ivPoster2, 100, 140)
         }
-        Handler().postDelayed({ onStopProggress() }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({ onStopProggress() }, 2000)
     }
 
     override fun onClick(v: View) {

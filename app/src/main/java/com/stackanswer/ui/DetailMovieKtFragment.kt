@@ -3,6 +3,7 @@ package com.stackanswer.ui
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -57,7 +58,7 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
     private fun whileShow() {
         if (film == null) {
             while (film == null) {
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     if (film != null) {
                         ivFovorite()
                     }

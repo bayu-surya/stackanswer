@@ -2,6 +2,7 @@ package com.stackanswer.favorite.ui
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,7 @@ class FavoriteMovieKtFragment : Fragment() {
 
         viewModel.tourism.observe(viewLifecycleOwner) { movieFavorites ->
             setupRVmovie(movieFavorites)
-            Handler().postDelayed({ onStopProggress() }, 2000)
+            Handler(Looper.getMainLooper()).postDelayed({ onStopProggress() }, 2000)
         }
     }
 
