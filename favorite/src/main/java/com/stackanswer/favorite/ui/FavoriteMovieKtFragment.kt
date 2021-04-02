@@ -46,27 +46,35 @@ class FavoriteMovieKtFragment : Fragment() {
     }
 
     private fun setupRVmovie(filmList: List<MovieFavorite>) {
-        adapter =
-            MovieFavoriteKtAdapter(context,
-                filmList)
-        rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rvMovie?.adapter = adapter
-        adapter?.setCallback { films: MovieFavorite?, _: Int ->
-            val fragment = DetailMovieFavoriteKtFragment()
-            val b = Bundle()
-            b.putParcelable(fragment.javaClass.simpleName, films)
-            fragment.arguments = b
-            val backStateName = FavoriteFragment::class.java.simpleName
+        if (filmList.isNotEmpty()) {
+            binding.rvMovie.visibility=View.VISIBLE
+            binding.tvNull.visibility=View.GONE
+            adapter =
+                MovieFavoriteKtAdapter(context,
+                    filmList)
+            rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            rvMovie?.adapter = adapter
+            adapter?.setCallback { films: MovieFavorite?, _: Int ->
+                val fragment = DetailMovieFavoriteKtFragment()
+                val b = Bundle()
+                b.putParcelable(fragment.javaClass.simpleName, films)
+                fragment.arguments = b
+                val backStateName = FavoriteFragment::class.java.simpleName
 
-            (requireActivity() as FavoriteActivity).supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container_layout_fav, fragment, fragment.javaClass.simpleName)
-                .addToBackStack(backStateName)
-                .commit()
+                (requireActivity() as FavoriteActivity).supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.container_layout_fav, fragment, fragment.javaClass.simpleName)
+                    .addToBackStack(backStateName)
+                    .commit()
+            }
+        } else{
+            binding.rvMovie.visibility=View.GONE
+            binding.tvNull.visibility=View.VISIBLE
         }
     }
 
     private fun onStartProggress() {
+        binding.tvNull.visibility=View.GONE
         binding.rvMovie.visibility = View.GONE
         binding.shimmer.visibility = View.VISIBLE
         binding.shimmer2.visibility = View.VISIBLE

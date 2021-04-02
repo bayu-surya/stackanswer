@@ -50,6 +50,8 @@ class MovieKtFragment : Fragment() {
                     is Resource.Error -> {
                         Log.d("TAG", "loadFromDB: 6")
                         onStopProggress()
+                        binding.rvMovie.visibility=View.GONE
+                        binding.tvNull.visibility=View.VISIBLE
                     }
                 }
             }
@@ -63,6 +65,8 @@ class MovieKtFragment : Fragment() {
     private fun setupRVmovie(filmList: List<Movie>) {
         Log.d(TAG, "loadMovie: 2 " + filmList.size)
         if (filmList.isNotEmpty()) {
+            binding.rvMovie.visibility=View.VISIBLE
+            binding.tvNull.visibility=View.GONE
             val adapter = MovieAdapter(context, filmList)
             rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             rvMovie?.adapter = adapter
@@ -79,6 +83,9 @@ class MovieKtFragment : Fragment() {
                     .addToBackStack(backStateName)
                     .commit()
             }
+        } else{
+            binding.rvMovie.visibility=View.GONE
+            binding.tvNull.visibility=View.VISIBLE
         }
     }
 

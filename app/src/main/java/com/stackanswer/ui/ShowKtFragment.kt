@@ -43,6 +43,8 @@ class ShowKtFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         onStopProggress()
+                        binding.rvShow.visibility=View.GONE
+                        binding.tvNull.visibility=View.VISIBLE
                     }
                 }
             }
@@ -72,6 +74,8 @@ class ShowKtFragment : Fragment() {
 
     private fun setupRVmovie(filmList: List<Show>) {
         if (filmList.isNotEmpty()) {
+            binding.rvShow.visibility=View.VISIBLE
+            binding.tvNull.visibility=View.GONE
             val adapter = ShowAdapter(context, filmList)
             rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             rvMovie?.adapter = adapter
@@ -88,6 +92,9 @@ class ShowKtFragment : Fragment() {
                         .addToBackStack(backStateName)
                         .commit()
             }
+        } else{
+            binding.rvShow.visibility=View.GONE
+            binding.tvNull.visibility=View.VISIBLE
         }
     }
 }
