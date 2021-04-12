@@ -67,7 +67,7 @@ class MovieKtFragment : Fragment() {
     private val TAG = "MainViewModel"
 
     private fun setupRVmovie(filmList: List<Movie>) {
-        Log.d(TAG, "loadMovie: 2 " + filmList.size)
+        Log.d(TAG, "loadMovie: 2 = " + filmList.size)
         if (filmList.isNotEmpty()) {
             binding.rvMovie.visibility=View.VISIBLE
             binding.tvNull.visibility=View.GONE
