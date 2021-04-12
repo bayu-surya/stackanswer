@@ -100,7 +100,9 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
                                     it.forEachIndexed { index, value ->
                                         Log.d(TAG, "setup: $index")
                                         if (value.id == film?.id) {
-                                            setupFilm(value)
+                                            if (context!=null) {
+                                                setupFilm(value)
+                                            }
                                             movie = value
                                         }
                                     }
@@ -198,5 +200,29 @@ class DetailMovieKtFragment : Fragment(), View.OnClickListener {
         binding.shimmer.stopShimmerAnimation()
         binding.shimmer2.stopShimmerAnimation()
         binding.shimmer3.stopShimmerAnimation()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+//        binding.ivFavorite
+//        binding.ivKembali
+//        binding.ivPoster
+//        binding.ivPoster2
+//        binding.ivPoster3
+//        binding.ivPoster4
+        binding.cvPoster.removeAllViewsInLayout()
+        binding.cvPoster2.removeAllViewsInLayout()
+        binding.cvPoster3.removeAllViewsInLayout()
+        binding.cvPoster4.removeAllViewsInLayout()
+        binding.shimmer.removeAllViewsInLayout()
+        binding.shimmer2.removeAllViewsInLayout()
+        binding.shimmer3.removeAllViewsInLayout()
+        binding.toolbarHome.removeAllViewsInLayout()
+        binding.clBody.removeAllViewsInLayout()
+        binding.nestedScroll.removeAllViewsInLayout()
+
+        if (view?.parent != null) {
+            (view?.parent as ViewGroup).removeView(view)
+        }
     }
 }

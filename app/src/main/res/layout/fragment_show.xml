@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
-    android:background="@color/bgHome">
+    android:background="@color/bgHome"
+    android:id="@+id/linear">
 
     <TextView
         android:id="@+id/tv_null"

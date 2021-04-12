@@ -17,10 +17,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.stackanswer.R;
 import com.stackanswer.adapter.SectionsPagerAdapter;
+import com.stackanswer.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private static final int[] TAB_TITLES = new int[]{R.string.movies, R.string.tv_show};
+    private FragmentHomeBinding binding;
+    private SectionsPagerAdapter sectionsPagerAdapter;
+    private MovieKtFragment movieFragment;
+    private ShowKtFragment showFragment;
 
     public HomeFragment() {
     }
@@ -28,6 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentHomeBinding.inflate(getLayoutInflater());
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -40,7 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         FloatingActionButton fabAdd = view.findViewById(R.id.fab_add);
         fabAdd.setOnClickListener(this);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(),getChildFragmentManager(),TAB_TITLES);
+        sectionsPagerAdapter = new SectionsPagerAdapter(getContext(),getChildFragmentManager(),TAB_TITLES);
         ViewPager viewPager = view.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = view.findViewById(R.id.tabs);
@@ -50,8 +56,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getContext(), getChildFragmentManager(),TAB_TITLES);
-        MovieKtFragment movieFragment = new MovieKtFragment();
-        ShowKtFragment showFragment = new ShowKtFragment();
+        movieFragment = new MovieKtFragment();
+        showFragment = new ShowKtFragment();
         adapter.addFragment(movieFragment);
         adapter.addFragment(showFragment);
         viewPager.setAdapter(adapter);
@@ -64,6 +70,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(uri);
             startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding.nestedScroll.removeAllViewsInLayout();
+        sectionsPagerAdapter=null;
+        movieFragment=null;
+        showFragment=null;
+
+        if (binding.getRoot().getParent() != null) {
+            ((ViewGroup) binding.getRoot().getParent()).removeView(binding.getRoot());
         }
     }
 }

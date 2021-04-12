@@ -37,7 +37,9 @@ class FavoriteShowKtFragment : Fragment() {
         rvMovie = binding.rvShow
 
         viewModel.tourism.observe(viewLifecycleOwner, { movieFavorites ->
-            setupRVmovie(movieFavorites)
+            if (context!=null) {
+                setupRVmovie(movieFavorites)
+            }
             Handler(Looper.getMainLooper()).postDelayed({ onStopProggress() }, 2000)
         })
 
@@ -88,5 +90,26 @@ class FavoriteShowKtFragment : Fragment() {
         binding.shimmer.stopShimmerAnimation()
         binding.shimmer2.stopShimmerAnimation()
         binding.shimmer3.stopShimmerAnimation()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.rvShow.setOnClickListener(null)
+        binding.linear.removeOnLayoutChangeListener(null)
+        binding.linear.setOnClickListener(null)
+
+        binding.rvShow.removeAllViewsInLayout()
+        binding.shimmer.removeAllViewsInLayout()
+        binding.shimmer2.removeAllViewsInLayout()
+        binding.shimmer3.removeAllViewsInLayout()
+        binding.loading.removeAllViewsInLayout()
+
+        binding.linear.removeAllViews()
+        binding.linear.removeAllViewsInLayout()
+
+        if (view?.parent != null) {
+            (view?.parent as ViewGroup).removeView(view)
+        }
     }
 }

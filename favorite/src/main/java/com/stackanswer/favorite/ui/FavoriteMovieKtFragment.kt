@@ -16,7 +16,6 @@ import com.stackanswer.favorite.databinding.FragmentFavoriteMovieBinding
 import com.stackanswer.favorite.viewmodel.MovieFavoriteViewModelKt
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class FavoriteMovieKtFragment : Fragment() {
 
     private var rvMovie: RecyclerView? = null
@@ -40,7 +39,9 @@ class FavoriteMovieKtFragment : Fragment() {
         rvMovie = binding.rvMovie
 
         viewModel.tourism.observe(viewLifecycleOwner) { movieFavorites ->
-            setupRVmovie(movieFavorites)
+            if (context!=null) {
+                setupRVmovie(movieFavorites)
+            }
             Handler(Looper.getMainLooper()).postDelayed({ onStopProggress() }, 2000)
         }
     }
@@ -92,5 +93,26 @@ class FavoriteMovieKtFragment : Fragment() {
         binding.shimmer.stopShimmerAnimation()
         binding.shimmer2.stopShimmerAnimation()
         binding.shimmer3.stopShimmerAnimation()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.rvMovie.setOnClickListener(null)
+        binding.linear.removeOnLayoutChangeListener(null)
+        binding.linear.setOnClickListener(null)
+
+        binding.rvMovie.removeAllViewsInLayout()
+        binding.shimmer.removeAllViewsInLayout()
+        binding.shimmer2.removeAllViewsInLayout()
+        binding.shimmer3.removeAllViewsInLayout()
+        binding.loading.removeAllViewsInLayout()
+
+        binding.linear.removeAllViews()
+        binding.linear.removeAllViewsInLayout()
+
+        if (view?.parent != null) {
+            (view?.parent as ViewGroup).removeView(view)
+        }
     }
 }

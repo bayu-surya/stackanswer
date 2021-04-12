@@ -1,6 +1,7 @@
 package com.stackanswer.favorite.ui
 
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.stackanswer.favorite.R
@@ -30,5 +31,15 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.containerLayoutFav.removeAllViewsInLayout()
+        binding.rootView.removeAllViewsInLayout()
+
+        if (binding.root.parent != null) {
+            (binding.root.parent as ViewGroup).removeView(binding.root)
+        }
     }
 }

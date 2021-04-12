@@ -24,8 +24,10 @@ class ShowKtFragment : Fragment() {
 
     private val viewModel: ShowViewModelKt by viewModel()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
         binding = FragmentShowBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -39,12 +41,17 @@ class ShowKtFragment : Fragment() {
                     is Resource.Loading -> onStartProggress()
                     is Resource.Success -> {
                         onStopProggress()
-                        tourism.data?.let { DataMapper.mapShowToDomain(it) }?.let { setupRVmovie(it) }
+                        tourism.data?.let { DataMapper.mapShowToDomain(it) }
+                            ?.let {
+                                if (context!=null) {
+                                    setupRVmovie(it)
+                                }
+                            }
                     }
                     is Resource.Error -> {
                         onStopProggress()
-                        binding.rvShow.visibility=View.GONE
-                        binding.tvNull.visibility=View.VISIBLE
+                        binding.rvShow.visibility = View.GONE
+                        binding.tvNull.visibility = View.VISIBLE
                     }
                 }
             }
@@ -77,7 +84,9 @@ class ShowKtFragment : Fragment() {
             binding.rvShow.visibility=View.VISIBLE
             binding.tvNull.visibility=View.GONE
             val adapter = ShowAdapter(context, filmList)
-            rvMovie?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            rvMovie?.layoutManager = LinearLayoutManager(context,
+                LinearLayoutManager.VERTICAL,
+                false)
             rvMovie?.adapter = adapter
             adapter.setCallback { films: Show?, _: Int ->
                 val mFragmentManager = (requireContext() as FragmentActivity).supportFragmentManager
@@ -97,4 +106,26 @@ class ShowKtFragment : Fragment() {
             binding.tvNull.visibility=View.VISIBLE
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.rvShow.setOnClickListener(null)
+        binding.linear.removeOnLayoutChangeListener(null)
+        binding.linear.setOnClickListener(null)
+
+        binding.rvShow.removeAllViewsInLayout()
+        binding.shimmer.removeAllViewsInLayout()
+        binding.shimmer2.removeAllViewsInLayout()
+        binding.shimmer3.removeAllViewsInLayout()
+        binding.loading.removeAllViewsInLayout()
+
+        binding.linear.removeAllViews()
+        binding.linear.removeAllViewsInLayout()
+
+        if (view?.parent != null) {
+            (view?.parent as ViewGroup).removeView(view)
+        }
+    }
+
 }

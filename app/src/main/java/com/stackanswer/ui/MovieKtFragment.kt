@@ -45,7 +45,11 @@ class MovieKtFragment : Fragment() {
                         Log.d("TAG", "loadFromDB: 5")
                         onStopProggress()
                         tourism.data?.let { DataMapper.mapMovieToDomain(it) }
-                            ?.let { setupRVmovie(it) }
+                            ?.let {
+                                if (context!=null) {
+                                    setupRVmovie(it)
+                                }
+                            }
                     }
                     is Resource.Error -> {
                         Log.d("TAG", "loadFromDB: 6")
@@ -105,5 +109,26 @@ class MovieKtFragment : Fragment() {
         binding.shimmer.stopShimmerAnimation()
         binding.shimmer2.stopShimmerAnimation()
         binding.shimmer3.stopShimmerAnimation()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        binding.rvMovie.setOnClickListener(null)
+        binding.linear.removeOnLayoutChangeListener(null)
+        binding.linear.setOnClickListener(null)
+
+        binding.rvMovie.removeAllViewsInLayout()
+        binding.shimmer.removeAllViewsInLayout()
+        binding.shimmer2.removeAllViewsInLayout()
+        binding.shimmer3.removeAllViewsInLayout()
+        binding.loading.removeAllViewsInLayout()
+
+        binding.linear.removeAllViews()
+        binding.linear.removeAllViewsInLayout()
+
+        if (view?.parent != null) {
+            (view?.parent as ViewGroup).removeView(view)
+        }
     }
 }

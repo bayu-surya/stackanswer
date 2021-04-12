@@ -1,12 +1,29 @@
 
--keep,includedescriptorclasses class com.stackanswer.core.retrofit.ListMovieResponse** {*;}
--keep,includedescriptorclasses class com.stackanswer.core.retrofit.ResultsItem** {*;}
+-dontshrink
+-dontoptimize
 
-##---------------Begin: proguard configuration for SQLCipher  ----------
--keep,includedescriptorclasses class net.sqlcipher.** { *; }
--keep,includedescriptorclasses interface net.sqlcipher.** { *; }
+-keep,includedescriptorclasses class com.stackanswer.core.** {*;}
 
 
+
+##-keepclassmembers,includedescriptorclasses class com.stackanswer.core** {*;}
+#
+#-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ListMovieResponse** {*;}
+#-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ResultsItem** {*;}
+
+#########################################
+
+#room
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-dontwarn androidx.room.paging.**
+
+#########################################
+###---------------Begin: proguard configuration for SQLCipher  ----------
+#-keep,includedescriptorclasses class net.sqlcipher.** { *; }
+#-keep,includedescriptorclasses interface net.sqlcipher.** { *; }
+
+#########################################
 ##---------------Begin: proguard configuration for Gson  ----------
 # Gson uses generic type information stored in a class file when working with fields. Proguard
 # removes such information by default, so configure it to keep all of it.
@@ -88,4 +105,4 @@
 
 ##---------------Begin: proguard configuration for RxJava  ----------
 # Uncomment if you use RxJava
-#-dontwarn java.util.concurrent.Flow*
+-dontwarn java.util.concurrent.Flow*

@@ -5,9 +5,11 @@
     xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:orientation="vertical"
-    android:background="@color/bgHome">
+    android:background="@color/bgHome"
+    android:id="@+id/linear">
+
+<!--    android:fillViewport="true"-->
 
     <TextView
         android:id="@+id/tv_null"

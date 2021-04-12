@@ -36,4 +36,8 @@ class AppExecutors @VisibleForTesting constructor(
             mainThreadHandler.post(command)
         }
     }
+
+//    fun shutdown() {
+//        diskIO.shutdown
+//    }
 }
