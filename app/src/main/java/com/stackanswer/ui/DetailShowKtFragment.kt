@@ -207,12 +207,7 @@ class DetailShowKtFragment : Fragment(), View.OnClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        binding.ivFavorite
-//        binding.ivKembali
-//        binding.ivPoster
-//        binding.ivPoster2
-//        binding.ivPoster3
-//        binding.ivPoster4
+
         binding.cvPoster.removeAllViewsInLayout()
         binding.cvPoster2.removeAllViewsInLayout()
         binding.cvPoster3.removeAllViewsInLayout()

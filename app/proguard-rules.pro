@@ -1,23 +1,8 @@
 
-#-keep,includedescriptorclasses class com.stackanswer.ui** {*;}
-#-keep,includedescriptorclasses class com.stackanswer.adapter** {*;}
-#-keep,includedescriptorclasses class com.stackanswer.injection** {*;}
-#-keep,includedescriptorclasses class com.stackanswer.viewmodel** {*;}
-#-keep,includedescriptorclasses class com.stackanswer** {*;}
-#-keepclassmembers,includedescriptorclasses class com.stackanswer** {*;}
-#allowobfuscation
-
-
-
-
-
 -dontshrink
 -dontoptimize
 
 -keep,includedescriptorclasses class com.stackanswer.** {*;}
-
-
-
 
 #########################################
 

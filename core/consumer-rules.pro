@@ -4,10 +4,6 @@
 
 -keep,includedescriptorclasses class com.stackanswer.core.** {*;}
 
-
-
-##-keepclassmembers,includedescriptorclasses class com.stackanswer.core** {*;}
-#
 #-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ListMovieResponse** {*;}
 #-keep,includedescriptorclasses class com.stackanswer.core.retrofit.ResultsItem** {*;}
 
@@ -17,11 +13,6 @@
 -keep class * extends androidx.room.RoomDatabase
 -keep @androidx.room.Entity class *
 -dontwarn androidx.room.paging.**
-
-#########################################
-###---------------Begin: proguard configuration for SQLCipher  ----------
-#-keep,includedescriptorclasses class net.sqlcipher.** { *; }
-#-keep,includedescriptorclasses interface net.sqlcipher.** { *; }
 
 #########################################
 ##---------------Begin: proguard configuration for Gson  ----------
