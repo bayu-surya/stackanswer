@@ -7,7 +7,6 @@ import com.stackanswer.core.utils.AppExecutors
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.Executor
 
 class MovieFavoriteKtRepository(
     private val localDataSource: LocalMovieFavoriteDataSource,
@@ -25,19 +24,6 @@ class MovieFavoriteKtRepository(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
         }
-//        try {
-//            appExecutors.diskIO().execute {
-//                localDataSource.insertTourism(tourism)
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe()
-//            }
-//        } catch (Ex e) {
-//            System.out.println(e)
-//        } finally{
-//            appExecutors.diskIO().; // This is the method we use to avoid memory Leaks.
-//            // eService.shutdownNow(); // -do-
-//        }
     }
 
     override fun updateFavoriteTourism(tourism: MovieFavorite, state: Boolean) {
